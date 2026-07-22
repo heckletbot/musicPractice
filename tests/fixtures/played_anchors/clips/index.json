@@ -1,0 +1,44 @@
+{
+  "sample_rate": 22050,
+  "clips": [
+    {
+      "piece_id": "winter_1973",
+      "anchor_id": "piece_first",
+      "performance_sec": 23.0,
+      "start_note": {
+        "measure": 4,
+        "note_index_in_measure": 1
+      },
+      "exact_2s": "winter_1973__piece_first__exact2s.wav",
+      "review": "winter_1973__piece_first__review.wav",
+      "review_window": "[22.0, 27.0] sec on played",
+      "onset_at_in_review_sec": 1.0
+    },
+    {
+      "piece_id": "viktor_tale",
+      "anchor_id": "piece_first",
+      "performance_sec": 1.5,
+      "start_note": {
+        "measure": 2,
+        "note_index_in_measure": 1
+      },
+      "exact_2s": "viktor_tale__piece_first__exact2s.wav",
+      "review": "viktor_tale__piece_first__review.wav",
+      "review_window": "[0.5, 5.5] sec on played",
+      "onset_at_in_review_sec": 1.0
+    },
+    {
+      "piece_id": "meili_flute",
+      "anchor_id": "piece_first",
+      "performance_sec": 42.5,
+      "start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "exact_2s": "meili_flute__piece_first__exact2s.wav",
+      "review": "meili_flute__piece_first__review.wav",
+      "review_window": "[41.5, 46.5] sec on played",
+      "onset_at_in_review_sec": 1.0
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "template_id": "meili_flute_1_2",
+  "source_wav": "../../source/meili_flute_template.wav",
+  "source_sha256": "35597e8b41b6a7a1c8a82a6669b38b2dfcbc26783a36c3594150291158543e36",
+  "duration_sec": 176.27428571428572,
+  "num_frames": 7592,
+  "feature": {
+    "sample_rate": 22050,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "win_length": 2048,
+    "n_mels": 128,
+    "fmin": 27.5,
+    "fmax": null,
+    "power_to_db_ref": "max",
+    "normalize_minmax": true
+  },
+  "created_at": "2026-07-19T08:36:11.199574+00:00",
+  "build_tool_version": "0.1.0",
+  "feature_kind": "pitch_chroma_cqt",
+  "preprocess": {
+    "sample_rate": 22050,
+    "highpass_hz": null,
+    "trim_top_db": null,
+    "target_rms": null,
+    "use_harmonic": false,
+    "bandpass_low_hz": null,
+    "bandpass_high_hz": null,
+    "peak_limit": 0.98
+  },
+  "pitch_feature": {
+    "sample_rate": 22050,
+    "hop_length": 512,
+    "n_chroma": 12,
+    "smooth_frames": 11,
+    "use_delta": true,
+    "context_sec": 0.0,
+    "normalize_per_frame": true
+  },
+  "score_path": "../../scores/meili_flute/meta.json",
+  "score_sha256": "6e0cde2224b9ecfd863305cb3a8145e1430fcf9a913110d4345f47075f669673"
+}

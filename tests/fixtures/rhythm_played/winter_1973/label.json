@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "suite": "rhythm_played",
+  "piece_id": "winter_1973",
+  "source_played": null,
+  "tempo_bpm": 60.0,
+  "start_note": {
+    "measure": 4,
+    "note_index_in_measure": 1
+  },
+  "start_note_id": "P1_m4_n1",
+  "score_t0_sec": 14.5,
+  "played_t0_sec": 23.0,
+  "pre_roll_sec": 0.2,
+  "window_sec": 12.0,
+  "wav_offset_sec": 0.1999999999999993,
+  "sample_rate": 22050,
+  "query": {
+    "wav": "window.wav",
+    "duration_sec": 12.2
+  },
+  "expected_notes": [
+    {
+      "onset_sec": 0.1999999999999993,
+      "duration_sec": 0.5,
+      "pitch_midi": 58.0,
+      "measure": 4,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m4_n1"
+    },
+    {
+      "onset_sec": 0.6999999999999993,
+      "duration_sec": 0.5,
+      "pitch_midi": 57.0,
+      "measure": 4,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m4_n2"
+    },
+    {
+      "onset_sec": 1.1999999999999993,
+      "duration_sec": 0.5,
+      "pitch_midi": 53.0,
+      "measure": 4,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m4_n3"
+    },
+    {
+      "onset_sec": 1.6999999999999993,
+      "duration_sec": 2.0,
+      "pitch_midi": 55.0,
+      "measure": 5,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m5_n4"
+    },
+    {
+      "onset_sec": 3.6999999999999993,
+      "duration_sec": 0.25,
+      "pitch_midi": 53.0,
+      "measure": 5,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m5_n5"
+    },
+    {
+      "onset_sec": 3.9499999999999993,
+      "duration_sec": 0.25,
+      "pitch_midi": 55.0,
+      "measure": 5,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m5_n6"
+    },
+    {
+      "onset_sec": 4.199999999999999,
+      "duration_sec": 0.5,
+      "pitch_midi": 57.0,
+      "measure": 5,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m5_n7"
+    },
+    {
+      "onset_sec": 4.699999999999999,
+      "duration_sec": 1.0,
+      "pitch_midi": 58.0,
+      "measure": 5,
+      "note_index_in_measure": 5,
+      "note_id": "P1_m5_n8"
+    },
+    {
+      "onset_sec": 5.699999999999999,
+      "duration_sec": 0.5,
+      "pitch_midi": 62.0,
+      "measure": 6,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m6_n9"
+    },
+    {
+      "onset_sec": 6.199999999999999,
+      "duration_sec": 0.25,
+      "pitch_midi": 60.0,
+      "measure": 6,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m6_n10"
+    },
+    {
+      "onset_sec": 6.449999999999999,
+      "duration_sec": 0.25,
+      "pitch_midi": 58.0,
+      "measure": 6,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m6_n11"
+    },
+    {
+      "onset_sec": 6.699999999999999,
+      "duration_sec": 0.5,
+      "pitch_midi": 57.0,
+      "measure": 6,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m6_n12"
+    },
+    {
+      "onset_sec": 7.199999999999999,
+      "duration_sec": 0.5,
+      "pitch_midi": 60.0,
+      "measure": 6,
+      "note_index_in_measure": 5,
+      "note_id": "P1_m6_n13"
+    },
+    {
+      "onset_sec": 7.699999999999999,
+      "duration_sec": 2.0,
+      "pitch_midi": 58.0,
+      "measure": 6,
+      "note_index_in_measure": 6,
+      "note_id": "P1_m6_n14"
+    },
+    {
+      "onset_sec": 10.2,
+      "duration_sec": 0.5,
+      "pitch_midi": 58.0,
+      "measure": 7,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m7_n15"
+    },
+    {
+      "onset_sec": 10.7,
+      "duration_sec": 1.0,
+      "pitch_midi": 57.0,
+      "measure": 7,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m7_n16"
+    },
+    {
+      "onset_sec": 11.7,
+      "duration_sec": 0.5,
+      "pitch_midi": 55.0,
+      "measure": 7,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m7_n17"
+    }
+  ],
+  "note_count": 17,
+  "product_rule": "rhythm_ok <=> duration_ok",
+  "comment": "Expected onsets from score timeline (tempo 60); anchored at played 23s"
+}

@@ -1,0 +1,761 @@
+{
+  "schema_version": "1.0",
+  "description": "每曲 10 个不同谱面位置的开始点样本（t0 由首音锚点+谱面 onset 线性推算，status=draft）",
+  "samples_per_piece": 10,
+  "tempo_scale": 1.0,
+  "sample_rate": 22050,
+  "query_duration_sec": 2.0,
+  "cases": [
+    {
+      "case_id": "winter_1973__pos00_m4n1",
+      "label": "labels/winter_1973__pos00_m4n1.json",
+      "wav": "queries/winter_1973__pos00_m4n1.wav",
+      "review_wav": "clips/winter_1973__pos00_m4n1__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 23.0,
+      "start_note": {
+        "measure": 4,
+        "note_index_in_measure": 1
+      }
+    },
+    {
+      "case_id": "winter_1973__pos01_m26n4",
+      "label": "labels/winter_1973__pos01_m26n4.json",
+      "wav": "queries/winter_1973__pos01_m26n4.wav",
+      "review_wav": "clips/winter_1973__pos01_m26n4__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 79.44920411179767,
+      "start_note": {
+        "measure": 26,
+        "note_index_in_measure": 4
+      }
+    },
+    {
+      "case_id": "winter_1973__pos02_m33n2",
+      "label": "labels/winter_1973__pos02_m33n2.json",
+      "wav": "queries/winter_1973__pos02_m33n2.wav",
+      "review_wav": "clips/winter_1973__pos02_m33n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 93.77901113927133,
+      "start_note": {
+        "measure": 33,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "winter_1973__pos03_m40n3",
+      "label": "labels/winter_1973__pos03_m40n3.json",
+      "wav": "queries/winter_1973__pos03_m40n3.wav",
+      "review_wav": "clips/winter_1973__pos03_m40n3__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 108.108818166745,
+      "start_note": {
+        "measure": 40,
+        "note_index_in_measure": 3
+      }
+    },
+    {
+      "case_id": "winter_1973__pos04_m64n3",
+      "label": "labels/winter_1973__pos04_m64n3.json",
+      "wav": "queries/winter_1973__pos04_m64n3.wav",
+      "review_wav": "clips/winter_1973__pos04_m64n3__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 159.06538571553563,
+      "start_note": {
+        "measure": 64,
+        "note_index_in_measure": 3
+      }
+    },
+    {
+      "case_id": "winter_1973__pos05_m87n3",
+      "label": "labels/winter_1973__pos05_m87n3.json",
+      "wav": "queries/winter_1973__pos05_m87n3.wav",
+      "review_wav": "clips/winter_1973__pos05_m87n3__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 181.82248401869006,
+      "start_note": {
+        "measure": 87,
+        "note_index_in_measure": 3
+      }
+    },
+    {
+      "case_id": "winter_1973__pos06_m102n2",
+      "label": "labels/winter_1973__pos06_m102n2.json",
+      "wav": "queries/winter_1973__pos06_m102n2.wav",
+      "review_wav": "clips/winter_1973__pos06_m102n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 196.41671010440868,
+      "start_note": {
+        "measure": 102,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "winter_1973__pos07_m120n2",
+      "label": "labels/winter_1973__pos07_m120n2.json",
+      "wav": "queries/winter_1973__pos07_m120n2.wav",
+      "review_wav": "clips/winter_1973__pos07_m120n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 228.65593270054399,
+      "start_note": {
+        "measure": 120,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "winter_1973__pos08_m129n11",
+      "label": "labels/winter_1973__pos08_m129n11.json",
+      "wav": "queries/winter_1973__pos08_m129n11.wav",
+      "review_wav": "clips/winter_1973__pos08_m129n11__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 259.5759032211341,
+      "start_note": {
+        "measure": 129,
+        "note_index_in_measure": 11
+      }
+    },
+    {
+      "case_id": "winter_1973__pos09_m140n2",
+      "label": "labels/winter_1973__pos09_m140n2.json",
+      "wav": "queries/winter_1973__pos09_m140n2.wav",
+      "review_wav": "clips/winter_1973__pos09_m140n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 297.91666666666663,
+      "start_note": {
+        "measure": 140,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos00_m2n1",
+      "label": "labels/viktor_tale__pos00_m2n1.json",
+      "wav": "queries/viktor_tale__pos00_m2n1.wav",
+      "review_wav": "clips/viktor_tale__pos00_m2n1__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 1.5,
+      "start_note": {
+        "measure": 2,
+        "note_index_in_measure": 1
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos01_m10n3",
+      "label": "labels/viktor_tale__pos01_m10n3.json",
+      "wav": "queries/viktor_tale__pos01_m10n3.wav",
+      "review_wav": "clips/viktor_tale__pos01_m10n3__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 17.572851997683266,
+      "start_note": {
+        "measure": 10,
+        "note_index_in_measure": 3
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos02_m20n6",
+      "label": "labels/viktor_tale__pos02_m20n6.json",
+      "wav": "queries/viktor_tale__pos02_m20n6.wav",
+      "review_wav": "clips/viktor_tale__pos02_m20n6__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 39.7751814521102,
+      "start_note": {
+        "measure": 20,
+        "note_index_in_measure": 6
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos03_m29n8",
+      "label": "labels/viktor_tale__pos03_m29n8.json",
+      "wav": "queries/viktor_tale__pos03_m29n8.wav",
+      "review_wav": "clips/viktor_tale__pos03_m29n8__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 60.47919419488866,
+      "start_note": {
+        "measure": 29,
+        "note_index_in_measure": 8
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos04_m39n5",
+      "label": "labels/viktor_tale__pos04_m39n5.json",
+      "wav": "queries/viktor_tale__pos04_m39n5.wav",
+      "review_wav": "clips/viktor_tale__pos04_m39n5__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 81.1832069376669,
+      "start_note": {
+        "measure": 39,
+        "note_index_in_measure": 5
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos05_m46n4",
+      "label": "labels/viktor_tale__pos05_m46n4.json",
+      "wav": "queries/viktor_tale__pos05_m46n4.wav",
+      "review_wav": "clips/viktor_tale__pos05_m46n4__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 96.03016344400127,
+      "start_note": {
+        "measure": 46,
+        "note_index_in_measure": 4
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos06_m55n2",
+      "label": "labels/viktor_tale__pos06_m55n2.json",
+      "wav": "queries/viktor_tale__pos06_m55n2.wav",
+      "review_wav": "clips/viktor_tale__pos06_m55n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 115.4614582981918,
+      "start_note": {
+        "measure": 55,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos07_m77n10",
+      "label": "labels/viktor_tale__pos07_m77n10.json",
+      "wav": "queries/viktor_tale__pos07_m77n10.wav",
+      "review_wav": "clips/viktor_tale__pos07_m77n10__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 164.6803109595294,
+      "start_note": {
+        "measure": 77,
+        "note_index_in_measure": 10
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos08_m83n13",
+      "label": "labels/viktor_tale__pos08_m83n13.json",
+      "wav": "queries/viktor_tale__pos08_m83n13.wav",
+      "review_wav": "clips/viktor_tale__pos08_m83n13__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 184.1584282109587,
+      "start_note": {
+        "measure": 83,
+        "note_index_in_measure": 13
+      }
+    },
+    {
+      "case_id": "viktor_tale__pos09_m90n8",
+      "label": "labels/viktor_tale__pos09_m90n8.json",
+      "wav": "queries/viktor_tale__pos09_m90n8.wav",
+      "review_wav": "clips/viktor_tale__pos09_m90n8__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 202.00201814058957,
+      "start_note": {
+        "measure": 90,
+        "note_index_in_measure": 8
+      }
+    },
+    {
+      "case_id": "meili_flute__pos00_m5n1",
+      "label": "labels/meili_flute__pos00_m5n1.json",
+      "wav": "queries/meili_flute__pos00_m5n1.wav",
+      "review_wav": "clips/meili_flute__pos00_m5n1__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 42.5,
+      "start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      }
+    },
+    {
+      "case_id": "meili_flute__pos01_m29n2",
+      "label": "labels/meili_flute__pos01_m29n2.json",
+      "wav": "queries/meili_flute__pos01_m29n2.wav",
+      "review_wav": "clips/meili_flute__pos01_m29n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 69.54180691426788,
+      "start_note": {
+        "measure": 29,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "meili_flute__pos02_m49n2",
+      "label": "labels/meili_flute__pos02_m49n2.json",
+      "wav": "queries/meili_flute__pos02_m49n2.wav",
+      "review_wav": "clips/meili_flute__pos02_m49n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 93.00980674735493,
+      "start_note": {
+        "measure": 49,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "meili_flute__pos03_m54n1",
+      "label": "labels/meili_flute__pos03_m54n1.json",
+      "wav": "queries/meili_flute__pos03_m54n1.wav",
+      "review_wav": "clips/meili_flute__pos03_m54n1__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 100.15742090971644,
+      "start_note": {
+        "measure": 54,
+        "note_index_in_measure": 1
+      }
+    },
+    {
+      "case_id": "meili_flute__pos04_m77n1",
+      "label": "labels/meili_flute__pos04_m77n1.json",
+      "wav": "queries/meili_flute__pos04_m77n1.wav",
+      "review_wav": "clips/meili_flute__pos04_m77n1__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 117.07344109397211,
+      "start_note": {
+        "measure": 77,
+        "note_index_in_measure": 1
+      }
+    },
+    {
+      "case_id": "meili_flute__pos05_m88n2",
+      "label": "labels/meili_flute__pos05_m88n2.json",
+      "wav": "queries/meili_flute__pos05_m88n2.wav",
+      "review_wav": "clips/meili_flute__pos05_m88n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 125.76970499151193,
+      "start_note": {
+        "measure": 88,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "meili_flute__pos06_m98n5",
+      "label": "labels/meili_flute__pos06_m98n5.json",
+      "wav": "queries/meili_flute__pos06_m98n5.wav",
+      "review_wav": "clips/meili_flute__pos06_m98n5__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 138.8736642891747,
+      "start_note": {
+        "measure": 98,
+        "note_index_in_measure": 5
+      }
+    },
+    {
+      "case_id": "meili_flute__pos07_m113n3",
+      "label": "labels/meili_flute__pos07_m113n3.json",
+      "wav": "queries/meili_flute__pos07_m113n3.wav",
+      "review_wav": "clips/meili_flute__pos07_m113n3__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 155.90881137613638,
+      "start_note": {
+        "measure": 113,
+        "note_index_in_measure": 3
+      }
+    },
+    {
+      "case_id": "meili_flute__pos08_m120n2",
+      "label": "labels/meili_flute__pos08_m120n2.json",
+      "wav": "queries/meili_flute__pos08_m120n2.wav",
+      "review_wav": "clips/meili_flute__pos08_m120n2__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 161.50777580331953,
+      "start_note": {
+        "measure": 120,
+        "note_index_in_measure": 2
+      }
+    },
+    {
+      "case_id": "meili_flute__pos09_m130n1",
+      "label": "labels/meili_flute__pos09_m130n1.json",
+      "wav": "queries/meili_flute__pos09_m130n1.wav",
+      "review_wav": "clips/meili_flute__pos09_m130n1__review.wav",
+      "status": "draft",
+      "t0_performance_sec": 175.20736961451246,
+      "start_note": {
+        "measure": 130,
+        "note_index_in_measure": 1
+      }
+    }
+  ],
+  "by_piece": [
+    {
+      "piece_id": "winter_1973",
+      "piece_first_performance_sec": 23.0,
+      "audio_duration_sec": 299.96666666666664,
+      "n_score_notes": 503,
+      "samples": [
+        {
+          "case_id": "winter_1973__pos00_m4n1",
+          "label": "labels/winter_1973__pos00_m4n1.json",
+          "wav": "queries/winter_1973__pos00_m4n1.wav",
+          "review_wav": "clips/winter_1973__pos00_m4n1__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 23.0,
+          "start_note": {
+            "measure": 4,
+            "note_index_in_measure": 1
+          }
+        },
+        {
+          "case_id": "winter_1973__pos01_m26n4",
+          "label": "labels/winter_1973__pos01_m26n4.json",
+          "wav": "queries/winter_1973__pos01_m26n4.wav",
+          "review_wav": "clips/winter_1973__pos01_m26n4__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 79.44920411179767,
+          "start_note": {
+            "measure": 26,
+            "note_index_in_measure": 4
+          }
+        },
+        {
+          "case_id": "winter_1973__pos02_m33n2",
+          "label": "labels/winter_1973__pos02_m33n2.json",
+          "wav": "queries/winter_1973__pos02_m33n2.wav",
+          "review_wav": "clips/winter_1973__pos02_m33n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 93.77901113927133,
+          "start_note": {
+            "measure": 33,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "winter_1973__pos03_m40n3",
+          "label": "labels/winter_1973__pos03_m40n3.json",
+          "wav": "queries/winter_1973__pos03_m40n3.wav",
+          "review_wav": "clips/winter_1973__pos03_m40n3__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 108.108818166745,
+          "start_note": {
+            "measure": 40,
+            "note_index_in_measure": 3
+          }
+        },
+        {
+          "case_id": "winter_1973__pos04_m64n3",
+          "label": "labels/winter_1973__pos04_m64n3.json",
+          "wav": "queries/winter_1973__pos04_m64n3.wav",
+          "review_wav": "clips/winter_1973__pos04_m64n3__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 159.06538571553563,
+          "start_note": {
+            "measure": 64,
+            "note_index_in_measure": 3
+          }
+        },
+        {
+          "case_id": "winter_1973__pos05_m87n3",
+          "label": "labels/winter_1973__pos05_m87n3.json",
+          "wav": "queries/winter_1973__pos05_m87n3.wav",
+          "review_wav": "clips/winter_1973__pos05_m87n3__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 181.82248401869006,
+          "start_note": {
+            "measure": 87,
+            "note_index_in_measure": 3
+          }
+        },
+        {
+          "case_id": "winter_1973__pos06_m102n2",
+          "label": "labels/winter_1973__pos06_m102n2.json",
+          "wav": "queries/winter_1973__pos06_m102n2.wav",
+          "review_wav": "clips/winter_1973__pos06_m102n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 196.41671010440868,
+          "start_note": {
+            "measure": 102,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "winter_1973__pos07_m120n2",
+          "label": "labels/winter_1973__pos07_m120n2.json",
+          "wav": "queries/winter_1973__pos07_m120n2.wav",
+          "review_wav": "clips/winter_1973__pos07_m120n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 228.65593270054399,
+          "start_note": {
+            "measure": 120,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "winter_1973__pos08_m129n11",
+          "label": "labels/winter_1973__pos08_m129n11.json",
+          "wav": "queries/winter_1973__pos08_m129n11.wav",
+          "review_wav": "clips/winter_1973__pos08_m129n11__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 259.5759032211341,
+          "start_note": {
+            "measure": 129,
+            "note_index_in_measure": 11
+          }
+        },
+        {
+          "case_id": "winter_1973__pos09_m140n2",
+          "label": "labels/winter_1973__pos09_m140n2.json",
+          "wav": "queries/winter_1973__pos09_m140n2.wav",
+          "review_wav": "clips/winter_1973__pos09_m140n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 297.91666666666663,
+          "start_note": {
+            "measure": 140,
+            "note_index_in_measure": 2
+          }
+        }
+      ]
+    },
+    {
+      "piece_id": "viktor_tale",
+      "piece_first_performance_sec": 1.5,
+      "audio_duration_sec": 204.05201814058958,
+      "n_score_notes": 678,
+      "samples": [
+        {
+          "case_id": "viktor_tale__pos00_m2n1",
+          "label": "labels/viktor_tale__pos00_m2n1.json",
+          "wav": "queries/viktor_tale__pos00_m2n1.wav",
+          "review_wav": "clips/viktor_tale__pos00_m2n1__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 1.5,
+          "start_note": {
+            "measure": 2,
+            "note_index_in_measure": 1
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos01_m10n3",
+          "label": "labels/viktor_tale__pos01_m10n3.json",
+          "wav": "queries/viktor_tale__pos01_m10n3.wav",
+          "review_wav": "clips/viktor_tale__pos01_m10n3__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 17.572851997683266,
+          "start_note": {
+            "measure": 10,
+            "note_index_in_measure": 3
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos02_m20n6",
+          "label": "labels/viktor_tale__pos02_m20n6.json",
+          "wav": "queries/viktor_tale__pos02_m20n6.wav",
+          "review_wav": "clips/viktor_tale__pos02_m20n6__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 39.7751814521102,
+          "start_note": {
+            "measure": 20,
+            "note_index_in_measure": 6
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos03_m29n8",
+          "label": "labels/viktor_tale__pos03_m29n8.json",
+          "wav": "queries/viktor_tale__pos03_m29n8.wav",
+          "review_wav": "clips/viktor_tale__pos03_m29n8__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 60.47919419488866,
+          "start_note": {
+            "measure": 29,
+            "note_index_in_measure": 8
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos04_m39n5",
+          "label": "labels/viktor_tale__pos04_m39n5.json",
+          "wav": "queries/viktor_tale__pos04_m39n5.wav",
+          "review_wav": "clips/viktor_tale__pos04_m39n5__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 81.1832069376669,
+          "start_note": {
+            "measure": 39,
+            "note_index_in_measure": 5
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos05_m46n4",
+          "label": "labels/viktor_tale__pos05_m46n4.json",
+          "wav": "queries/viktor_tale__pos05_m46n4.wav",
+          "review_wav": "clips/viktor_tale__pos05_m46n4__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 96.03016344400127,
+          "start_note": {
+            "measure": 46,
+            "note_index_in_measure": 4
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos06_m55n2",
+          "label": "labels/viktor_tale__pos06_m55n2.json",
+          "wav": "queries/viktor_tale__pos06_m55n2.wav",
+          "review_wav": "clips/viktor_tale__pos06_m55n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 115.4614582981918,
+          "start_note": {
+            "measure": 55,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos07_m77n10",
+          "label": "labels/viktor_tale__pos07_m77n10.json",
+          "wav": "queries/viktor_tale__pos07_m77n10.wav",
+          "review_wav": "clips/viktor_tale__pos07_m77n10__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 164.6803109595294,
+          "start_note": {
+            "measure": 77,
+            "note_index_in_measure": 10
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos08_m83n13",
+          "label": "labels/viktor_tale__pos08_m83n13.json",
+          "wav": "queries/viktor_tale__pos08_m83n13.wav",
+          "review_wav": "clips/viktor_tale__pos08_m83n13__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 184.1584282109587,
+          "start_note": {
+            "measure": 83,
+            "note_index_in_measure": 13
+          }
+        },
+        {
+          "case_id": "viktor_tale__pos09_m90n8",
+          "label": "labels/viktor_tale__pos09_m90n8.json",
+          "wav": "queries/viktor_tale__pos09_m90n8.wav",
+          "review_wav": "clips/viktor_tale__pos09_m90n8__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 202.00201814058957,
+          "start_note": {
+            "measure": 90,
+            "note_index_in_measure": 8
+          }
+        }
+      ]
+    },
+    {
+      "piece_id": "meili_flute",
+      "piece_first_performance_sec": 42.5,
+      "audio_duration_sec": 177.25736961451247,
+      "n_score_notes": 314,
+      "samples": [
+        {
+          "case_id": "meili_flute__pos00_m5n1",
+          "label": "labels/meili_flute__pos00_m5n1.json",
+          "wav": "queries/meili_flute__pos00_m5n1.wav",
+          "review_wav": "clips/meili_flute__pos00_m5n1__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 42.5,
+          "start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          }
+        },
+        {
+          "case_id": "meili_flute__pos01_m29n2",
+          "label": "labels/meili_flute__pos01_m29n2.json",
+          "wav": "queries/meili_flute__pos01_m29n2.wav",
+          "review_wav": "clips/meili_flute__pos01_m29n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 69.54180691426788,
+          "start_note": {
+            "measure": 29,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "meili_flute__pos02_m49n2",
+          "label": "labels/meili_flute__pos02_m49n2.json",
+          "wav": "queries/meili_flute__pos02_m49n2.wav",
+          "review_wav": "clips/meili_flute__pos02_m49n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 93.00980674735493,
+          "start_note": {
+            "measure": 49,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "meili_flute__pos03_m54n1",
+          "label": "labels/meili_flute__pos03_m54n1.json",
+          "wav": "queries/meili_flute__pos03_m54n1.wav",
+          "review_wav": "clips/meili_flute__pos03_m54n1__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 100.15742090971644,
+          "start_note": {
+            "measure": 54,
+            "note_index_in_measure": 1
+          }
+        },
+        {
+          "case_id": "meili_flute__pos04_m77n1",
+          "label": "labels/meili_flute__pos04_m77n1.json",
+          "wav": "queries/meili_flute__pos04_m77n1.wav",
+          "review_wav": "clips/meili_flute__pos04_m77n1__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 117.07344109397211,
+          "start_note": {
+            "measure": 77,
+            "note_index_in_measure": 1
+          }
+        },
+        {
+          "case_id": "meili_flute__pos05_m88n2",
+          "label": "labels/meili_flute__pos05_m88n2.json",
+          "wav": "queries/meili_flute__pos05_m88n2.wav",
+          "review_wav": "clips/meili_flute__pos05_m88n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 125.76970499151193,
+          "start_note": {
+            "measure": 88,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "meili_flute__pos06_m98n5",
+          "label": "labels/meili_flute__pos06_m98n5.json",
+          "wav": "queries/meili_flute__pos06_m98n5.wav",
+          "review_wav": "clips/meili_flute__pos06_m98n5__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 138.8736642891747,
+          "start_note": {
+            "measure": 98,
+            "note_index_in_measure": 5
+          }
+        },
+        {
+          "case_id": "meili_flute__pos07_m113n3",
+          "label": "labels/meili_flute__pos07_m113n3.json",
+          "wav": "queries/meili_flute__pos07_m113n3.wav",
+          "review_wav": "clips/meili_flute__pos07_m113n3__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 155.90881137613638,
+          "start_note": {
+            "measure": 113,
+            "note_index_in_measure": 3
+          }
+        },
+        {
+          "case_id": "meili_flute__pos08_m120n2",
+          "label": "labels/meili_flute__pos08_m120n2.json",
+          "wav": "queries/meili_flute__pos08_m120n2.wav",
+          "review_wav": "clips/meili_flute__pos08_m120n2__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 161.50777580331953,
+          "start_note": {
+            "measure": 120,
+            "note_index_in_measure": 2
+          }
+        },
+        {
+          "case_id": "meili_flute__pos09_m130n1",
+          "label": "labels/meili_flute__pos09_m130n1.json",
+          "wav": "queries/meili_flute__pos09_m130n1.wav",
+          "review_wav": "clips/meili_flute__pos09_m130n1__review.wav",
+          "status": "draft",
+          "t0_performance_sec": 175.20736961451246,
+          "start_note": {
+            "measure": 130,
+            "note_index_in_measure": 1
+          }
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "total": 30,
+    "draft": 30,
+    "corrected": 0
+  }
+}

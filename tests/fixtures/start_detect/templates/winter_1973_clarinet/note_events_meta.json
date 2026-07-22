@@ -1,0 +1,9 @@
+{
+  "calibration": {
+    "template_duration_sec": 299.2326530612245,
+    "score_end_sec": 296.2590816891025,
+    "scale": 1.0,
+    "offset_sec": 0.0,
+    "note": "multiple-rest + incremental tempo + concert pitch"
+  }
+}

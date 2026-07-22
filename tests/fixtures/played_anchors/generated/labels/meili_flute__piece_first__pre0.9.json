@@ -1,0 +1,29 @@
+{
+  "case_id": "meili_flute__piece_first__pre0.9",
+  "status": "draft",
+  "suite": "start_detect_played",
+  "piece_id": "meili_flute",
+  "score_id": "meili_flute",
+  "template_id": "meili_flute_1_2",
+  "anchor_id": "piece_first",
+  "start_note": {
+    "measure": 5,
+    "note_index_in_measure": 1
+  },
+  "played_source": "4、《美丽心情》 - Flute 1,2 .mp3",
+  "t0_performance_sec": 42.5,
+  "query": {
+    "performance_start_sec": 42.5,
+    "duration_sec": 2.0,
+    "pre_silence_sec": 0.9,
+    "sample_rate": 22050,
+    "wav": "queries/meili_flute__piece_first__pre0.9.wav"
+  },
+  "gt": {
+    "should_start": true,
+    "note": "曲目第一个可演奏音；请听 queries 后修正 status→corrected 或改字段",
+    "template_sec": null,
+    "align_tol_sec": 1.0
+  },
+  "comment": "曲目第一个可演奏音（谱面 measure 5 第 1 音）；真吹 42.5s"
+}

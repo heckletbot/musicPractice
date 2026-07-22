@@ -1,0 +1,29 @@
+{
+  "case_id": "viktor_tale__piece_first__pre0.3",
+  "status": "draft",
+  "suite": "start_detect_played",
+  "piece_id": "viktor_tale",
+  "score_id": "viktor_tale",
+  "template_id": "viktor_tale_clarinet",
+  "anchor_id": "piece_first",
+  "start_note": {
+    "measure": 2,
+    "note_index_in_measure": 1
+  },
+  "played_source": "23.VIKTOR'S TALE---单簧管.mp3",
+  "t0_performance_sec": 1.5,
+  "query": {
+    "performance_start_sec": 1.5,
+    "duration_sec": 2.0,
+    "pre_silence_sec": 0.3,
+    "sample_rate": 22050,
+    "wav": "queries/viktor_tale__piece_first__pre0.3.wav"
+  },
+  "gt": {
+    "should_start": true,
+    "note": "曲目第一个可演奏音；请听 queries 后修正 status→corrected 或改字段",
+    "template_sec": null,
+    "align_tol_sec": 1.0
+  },
+  "comment": "曲目第一个可演奏音（谱面 measure 2 第 1 音）；真吹 1.5s"
+}

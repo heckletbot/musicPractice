@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "template_id": "viktor_tale_clarinet",
+  "source_wav": "../../source/viktor_tale_template.wav",
+  "source_sha256": "256911b25a01103e491cee920b4994201e956df22a67f315ed5271a829f84a7c",
+  "duration_sec": 240.16979591836736,
+  "num_frames": 10344,
+  "feature": {
+    "sample_rate": 22050,
+    "n_fft": 2048,
+    "hop_length": 512,
+    "win_length": 2048,
+    "n_mels": 128,
+    "fmin": 27.5,
+    "fmax": null,
+    "power_to_db_ref": "max",
+    "normalize_minmax": true
+  },
+  "created_at": "2026-07-19T08:36:09.446002+00:00",
+  "build_tool_version": "0.1.0",
+  "feature_kind": "pitch_chroma_cqt",
+  "preprocess": {
+    "sample_rate": 22050,
+    "highpass_hz": null,
+    "trim_top_db": null,
+    "target_rms": null,
+    "use_harmonic": false,
+    "bandpass_low_hz": null,
+    "bandpass_high_hz": null,
+    "peak_limit": 0.98
+  },
+  "pitch_feature": {
+    "sample_rate": 22050,
+    "hop_length": 512,
+    "n_chroma": 12,
+    "smooth_frames": 11,
+    "use_delta": true,
+    "context_sec": 0.0,
+    "normalize_per_frame": true
+  },
+  "score_path": "../../scores/viktor_tale/meta.json",
+  "score_sha256": "9d1ca7b7747db501c45538b0a536475ff48d12de79b27973a55f408117e6b379"
+}

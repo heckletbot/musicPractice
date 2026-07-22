@@ -1,0 +1,38 @@
+{
+  "case_id": "winter_1973__pos00_m4n1",
+  "status": "draft",
+  "suite": "start_detect_played",
+  "piece_id": "winter_1973",
+  "score_id": "winter_1973",
+  "template_id": "winter_1973_clarinet",
+  "position_rank": 0,
+  "note_global_index": 0,
+  "start_note": {
+    "measure": 4,
+    "note_index_in_measure": 1
+  },
+  "score_onset_sec": 8.5,
+  "pitch": "C4",
+  "pitch_midi": 58,
+  "played_source": "1、1973年的冬天 - 1st Bb Clarinet .mp3",
+  "t0_performance_sec": 23.0,
+  "t0_estimation": {
+    "method": "linear_from_piece_first_fit_to_audio",
+    "piece_first_performance_sec": 23.0,
+    "tempo_scale": 0.9894390566588891,
+    "note": "推算值：把谱面时段线性拉伸到真吹剩余时长；请听审后修正"
+  },
+  "query": {
+    "performance_start_sec": 23.0,
+    "duration_sec": 2.0,
+    "pre_silence_sec": 0.0,
+    "sample_rate": 22050,
+    "wav": "queries/winter_1973__pos00_m4n1.wav",
+    "review_wav": "clips/winter_1973__pos00_m4n1__review.wav"
+  },
+  "gt": {
+    "should_start": true,
+    "align_tol_sec": 1.0,
+    "template_sec": null
+  }
+}

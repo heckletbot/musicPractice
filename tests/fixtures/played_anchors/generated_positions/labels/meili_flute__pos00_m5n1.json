@@ -1,0 +1,38 @@
+{
+  "case_id": "meili_flute__pos00_m5n1",
+  "status": "draft",
+  "suite": "start_detect_played",
+  "piece_id": "meili_flute",
+  "score_id": "meili_flute",
+  "template_id": "meili_flute_1_2",
+  "position_rank": 0,
+  "note_global_index": 0,
+  "start_note": {
+    "measure": 5,
+    "note_index_in_measure": 1
+  },
+  "score_onset_sec": 8.289473684210527,
+  "pitch": "F5",
+  "pitch_midi": 77,
+  "played_source": "4、《美丽心情》 - Flute 1,2 .mp3",
+  "t0_performance_sec": 42.5,
+  "t0_estimation": {
+    "method": "linear_from_piece_first_fit_to_audio",
+    "piece_first_performance_sec": 42.5,
+    "tempo_scale": 0.6035763070438649,
+    "note": "推算值：把谱面时段线性拉伸到真吹剩余时长；请听审后修正"
+  },
+  "query": {
+    "performance_start_sec": 42.5,
+    "duration_sec": 2.0,
+    "pre_silence_sec": 0.0,
+    "sample_rate": 22050,
+    "wav": "queries/meili_flute__pos00_m5n1.wav",
+    "review_wav": "clips/meili_flute__pos00_m5n1__review.wav"
+  },
+  "gt": {
+    "should_start": true,
+    "align_tol_sec": 1.0,
+    "template_sec": null
+  }
+}

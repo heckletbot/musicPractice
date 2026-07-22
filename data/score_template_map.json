@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "description": "score_id → music2seq template_id mapping for start_detect",
+  "entries": {
+    "winter_1973": {
+      "template_id": "winter_1973_clarinet",
+      "title": "1973年的冬天"
+    },
+    "viktor_tale": {
+      "template_id": "viktor_tale_clarinet",
+      "title": "VIKTOR'S TALE"
+    },
+    "meili_flute": {
+      "template_id": "meili_flute_1_2",
+      "title": "美丽心情"
+    }
+  }
+}

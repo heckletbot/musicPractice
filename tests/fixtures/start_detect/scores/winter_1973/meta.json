@@ -1,0 +1,233 @@
+{
+  "schema_version": "1.0",
+  "score_id": "winter_1973",
+  "title": "IN THE WINTER OF 1730",
+  "tempo": 72.0,
+  "time_signature": "4/4",
+  "key": "F major",
+  "total_measures": 141,
+  "interval_measures": 4,
+  "interval_count": 36,
+  "intervals": [
+    {
+      "id": 0,
+      "start_measure": 1,
+      "end_measure": 4,
+      "note_count": 3
+    },
+    {
+      "id": 1,
+      "start_measure": 5,
+      "end_measure": 8,
+      "note_count": 23
+    },
+    {
+      "id": 2,
+      "start_measure": 9,
+      "end_measure": 12,
+      "note_count": 10
+    },
+    {
+      "id": 3,
+      "start_measure": 13,
+      "end_measure": 16,
+      "note_count": 0
+    },
+    {
+      "id": 4,
+      "start_measure": 17,
+      "end_measure": 20,
+      "note_count": 0
+    },
+    {
+      "id": 5,
+      "start_measure": 21,
+      "end_measure": 24,
+      "note_count": 7
+    },
+    {
+      "id": 6,
+      "start_measure": 25,
+      "end_measure": 28,
+      "note_count": 33
+    },
+    {
+      "id": 7,
+      "start_measure": 29,
+      "end_measure": 32,
+      "note_count": 34
+    },
+    {
+      "id": 8,
+      "start_measure": 33,
+      "end_measure": 36,
+      "note_count": 32
+    },
+    {
+      "id": 9,
+      "start_measure": 37,
+      "end_measure": 40,
+      "note_count": 31
+    },
+    {
+      "id": 10,
+      "start_measure": 41,
+      "end_measure": 44,
+      "note_count": 8
+    },
+    {
+      "id": 11,
+      "start_measure": 45,
+      "end_measure": 48,
+      "note_count": 13
+    },
+    {
+      "id": 12,
+      "start_measure": 49,
+      "end_measure": 52,
+      "note_count": 0
+    },
+    {
+      "id": 13,
+      "start_measure": 53,
+      "end_measure": 56,
+      "note_count": 0
+    },
+    {
+      "id": 14,
+      "start_measure": 57,
+      "end_measure": 60,
+      "note_count": 15
+    },
+    {
+      "id": 15,
+      "start_measure": 61,
+      "end_measure": 64,
+      "note_count": 14
+    },
+    {
+      "id": 16,
+      "start_measure": 65,
+      "end_measure": 68,
+      "note_count": 16
+    },
+    {
+      "id": 17,
+      "start_measure": 69,
+      "end_measure": 72,
+      "note_count": 14
+    },
+    {
+      "id": 18,
+      "start_measure": 73,
+      "end_measure": 76,
+      "note_count": 1
+    },
+    {
+      "id": 19,
+      "start_measure": 77,
+      "end_measure": 80,
+      "note_count": 13
+    },
+    {
+      "id": 20,
+      "start_measure": 81,
+      "end_measure": 84,
+      "note_count": 2
+    },
+    {
+      "id": 21,
+      "start_measure": 85,
+      "end_measure": 88,
+      "note_count": 14
+    },
+    {
+      "id": 22,
+      "start_measure": 89,
+      "end_measure": 92,
+      "note_count": 16
+    },
+    {
+      "id": 23,
+      "start_measure": 93,
+      "end_measure": 96,
+      "note_count": 14
+    },
+    {
+      "id": 24,
+      "start_measure": 97,
+      "end_measure": 100,
+      "note_count": 16
+    },
+    {
+      "id": 25,
+      "start_measure": 101,
+      "end_measure": 104,
+      "note_count": 14
+    },
+    {
+      "id": 26,
+      "start_measure": 105,
+      "end_measure": 108,
+      "note_count": 1
+    },
+    {
+      "id": 27,
+      "start_measure": 109,
+      "end_measure": 112,
+      "note_count": 9
+    },
+    {
+      "id": 28,
+      "start_measure": 113,
+      "end_measure": 116,
+      "note_count": 20
+    },
+    {
+      "id": 29,
+      "start_measure": 117,
+      "end_measure": 120,
+      "note_count": 18
+    },
+    {
+      "id": 30,
+      "start_measure": 121,
+      "end_measure": 124,
+      "note_count": 26
+    },
+    {
+      "id": 31,
+      "start_measure": 125,
+      "end_measure": 128,
+      "note_count": 16
+    },
+    {
+      "id": 32,
+      "start_measure": 129,
+      "end_measure": 132,
+      "note_count": 31
+    },
+    {
+      "id": 33,
+      "start_measure": 133,
+      "end_measure": 136,
+      "note_count": 26
+    },
+    {
+      "id": 34,
+      "start_measure": 137,
+      "end_measure": 140,
+      "note_count": 11
+    },
+    {
+      "id": 35,
+      "start_measure": 141,
+      "end_measure": 141,
+      "note_count": 2
+    }
+  ],
+  "source_path": null,
+  "source_sha256": "523ffba16660dfd15e5cb02d7b69bf87403187efda271be4ca49352e33cf336c",
+  "created_at": "2026-07-19T08:36:07Z",
+  "note_count": 503
+}

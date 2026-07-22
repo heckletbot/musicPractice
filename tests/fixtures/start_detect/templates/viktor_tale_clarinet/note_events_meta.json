@@ -1,0 +1,10 @@
+{
+  "calibration": {
+    "template_duration_sec": 240.16979591836736,
+    "score_end_sec": 197.75510204081633,
+    "scale": 1.2144809081527348,
+    "offset_sec": -1.5766980476401091,
+    "manual_piece_first_sec": 4.0,
+    "note": "Manual: Sibelius piece-first at 4.0s (auto-cal was 5.5767s)"
+  }
+}

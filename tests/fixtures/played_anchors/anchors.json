@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "description": "真吹演奏开始锚点：曲目第一个可演奏音符在 played 上的起点（用户标定）。",
+  "source": {
+    "played_dir": null,
+    "template_dir": null,
+    "sample_rate": 22050
+  },
+  "generation_defaults": {
+    "query_duration_sec": 2.0,
+    "pre_silence_sec_list": [
+      0.0,
+      0.3,
+      0.6,
+      0.9
+    ]
+  },
+  "pieces": [
+    {
+      "piece_id": "winter_1973",
+      "title": "1973年的冬天",
+      "score_id": "winter_1973",
+      "template_id": "winter_1973_clarinet",
+      "played_filename": "1、1973年的冬天 - 1st Bb Clarinet .mp3",
+      "anchors": [
+        {
+          "anchor_id": "piece_first",
+          "start_note": {
+            "measure": 4,
+            "note_index_in_measure": 1
+          },
+          "performance_sec": 23.0,
+          "template_sec": null,
+          "comment": "曲目第一个可演奏音（谱面 measure 4 第 1 音）；真吹 23s"
+        }
+      ]
+    },
+    {
+      "piece_id": "viktor_tale",
+      "title": "VIKTOR'S TALE",
+      "score_id": "viktor_tale",
+      "template_id": "viktor_tale_clarinet",
+      "played_filename": "23.VIKTOR'S TALE---单簧管.mp3",
+      "anchors": [
+        {
+          "anchor_id": "piece_first",
+          "start_note": {
+            "measure": 2,
+            "note_index_in_measure": 1
+          },
+          "performance_sec": 1.5,
+          "template_sec": 4.0,
+          "comment": "曲目第一个可演奏音（谱面 measure 2 第 1 音）；真吹 1.5s；Sibelius T0=4.0s（已校正 note_events）"
+        }
+      ]
+    },
+    {
+      "piece_id": "meili_flute",
+      "title": "美丽心情",
+      "score_id": "meili_flute",
+      "template_id": "meili_flute_1_2",
+      "played_filename": "4、《美丽心情》 - Flute 1,2 .mp3",
+      "anchors": [
+        {
+          "anchor_id": "piece_first",
+          "start_note": {
+            "measure": 29,
+            "note_index_in_measure": 1
+          },
+          "performance_sec": 42.0,
+          "template_sec": null,
+          "comment": "主旋律开始（谱面 measure 29 第 1 音）；前段多为休止/音型，不评；真吹约 42s"
+        }
+      ]
+    }
+  ]
+}

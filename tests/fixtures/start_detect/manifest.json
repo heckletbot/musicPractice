@@ -1,0 +1,1352 @@
+{
+  "schema_version": "1.0",
+  "created_at": "2026-07-19T08:36:11.301090+00:00",
+  "catalog_path": "tests/fixtures/start_detect/catalog.json",
+  "sample_rate": 22050,
+  "query_duration_sec": 2.0,
+  "pre_roll_sec": [
+    0.0,
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "templates_dir": "templates",
+  "scores_dir": "scores",
+  "case_count": 30,
+  "pieces": [
+    {
+      "piece_id": "winter_1973",
+      "title": "1973年的冬天",
+      "score_id": "winter_1973",
+      "template_id": "winter_1973_clarinet",
+      "source_mp3": null,
+      "source_musicxml": null,
+      "source_wav": "source/winter_1973_template.wav",
+      "template_dir": "templates/winter_1973_clarinet",
+      "anchors": [
+        {
+          "anchor_id": "m5_n1",
+          "start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "comment": "第 5 小节第一个可演奏音"
+        }
+      ],
+      "cases": [
+        {
+          "case_id": "winter_1973_m5_n1_case_00",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_00.wav",
+          "pre_roll_sec": 0.0,
+          "content_sec": 2.0,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_01",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_01.wav",
+          "pre_roll_sec": 0.1,
+          "content_sec": 1.9,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_02",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_02.wav",
+          "pre_roll_sec": 0.2,
+          "content_sec": 1.8,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_03",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_03.wav",
+          "pre_roll_sec": 0.3,
+          "content_sec": 1.7,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_04",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_04.wav",
+          "pre_roll_sec": 0.4,
+          "content_sec": 1.6,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_05",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_05.wav",
+          "pre_roll_sec": 0.5,
+          "content_sec": 1.5,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_06",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_06.wav",
+          "pre_roll_sec": 0.6,
+          "content_sec": 1.4,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_07",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_07.wav",
+          "pre_roll_sec": 0.7,
+          "content_sec": 1.3,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_08",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_08.wav",
+          "pre_roll_sec": 0.8,
+          "content_sec": 1.2,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        },
+        {
+          "case_id": "winter_1973_m5_n1_case_09",
+          "piece_id": "winter_1973",
+          "anchor_id": "m5_n1",
+          "query_wav": "queries/winter_1973/m5_n1/case_09.wav",
+          "pre_roll_sec": 0.9,
+          "content_sec": 1.1,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.034597569364824,
+          "expected_start_note": {
+            "measure": 5,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m5_n4",
+            "measure": 5,
+            "beat": 1.0,
+            "pitch_midi": 57,
+            "start_sec": 4.034597569364824
+          }
+        }
+      ]
+    },
+    {
+      "piece_id": "viktor_tale",
+      "title": "VIKTOR'S TALE",
+      "score_id": "viktor_tale",
+      "template_id": "viktor_tale_clarinet",
+      "source_mp3": null,
+      "source_musicxml": null,
+      "source_wav": "source/viktor_tale_template.wav",
+      "template_dir": "templates/viktor_tale_clarinet",
+      "anchors": [
+        {
+          "anchor_id": "m3_n1",
+          "start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "comment": "第 3 小节第一个可演奏音"
+        }
+      ],
+      "cases": [
+        {
+          "case_id": "viktor_tale_m3_n1_case_00",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_00.wav",
+          "pre_roll_sec": 0.0,
+          "content_sec": 2.0,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_01",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_01.wav",
+          "pre_roll_sec": 0.1,
+          "content_sec": 1.9,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_02",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_02.wav",
+          "pre_roll_sec": 0.2,
+          "content_sec": 1.8,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_03",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_03.wav",
+          "pre_roll_sec": 0.3,
+          "content_sec": 1.7,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_04",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_04.wav",
+          "pre_roll_sec": 0.4,
+          "content_sec": 1.6,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_05",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_05.wav",
+          "pre_roll_sec": 0.5,
+          "content_sec": 1.5,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_06",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_06.wav",
+          "pre_roll_sec": 0.6,
+          "content_sec": 1.4,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_07",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_07.wav",
+          "pre_roll_sec": 0.7,
+          "content_sec": 1.3,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_08",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_08.wav",
+          "pre_roll_sec": 0.8,
+          "content_sec": 1.2,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        },
+        {
+          "case_id": "viktor_tale_m3_n1_case_09",
+          "piece_id": "viktor_tale",
+          "anchor_id": "m3_n1",
+          "query_wav": "queries/viktor_tale/m3_n1/case_09.wav",
+          "pre_roll_sec": 0.9,
+          "content_sec": 1.1,
+          "query_duration_sec": 2.0,
+          "template_sec": 4.3717798698426735,
+          "expected_start_note": {
+            "measure": 3,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m3_n2",
+            "measure": 3,
+            "beat": 1.0,
+            "pitch_midi": 76,
+            "start_sec": 5.948477917482783
+          }
+        }
+      ]
+    },
+    {
+      "piece_id": "meili_flute",
+      "title": "美丽心情",
+      "score_id": "meili_flute",
+      "template_id": "meili_flute_1_2",
+      "source_mp3": null,
+      "source_musicxml": null,
+      "source_wav": "source/meili_flute_template.wav",
+      "template_dir": "templates/meili_flute_1_2",
+      "anchors": [
+        {
+          "anchor_id": "m9_n1",
+          "start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "comment": "第 9 小节第一个可演奏音（跟谱 interval 起点）"
+        }
+      ],
+      "cases": [
+        {
+          "case_id": "meili_flute_m9_n1_case_00",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_00.wav",
+          "pre_roll_sec": 0.0,
+          "content_sec": 2.0,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_01",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_01.wav",
+          "pre_roll_sec": 0.1,
+          "content_sec": 1.9,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_02",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_02.wav",
+          "pre_roll_sec": 0.2,
+          "content_sec": 1.8,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_03",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_03.wav",
+          "pre_roll_sec": 0.3,
+          "content_sec": 1.7,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_04",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_04.wav",
+          "pre_roll_sec": 0.4,
+          "content_sec": 1.6,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_05",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_05.wav",
+          "pre_roll_sec": 0.5,
+          "content_sec": 1.5,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_06",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_06.wav",
+          "pre_roll_sec": 0.6,
+          "content_sec": 1.4,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_07",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_07.wav",
+          "pre_roll_sec": 0.7,
+          "content_sec": 1.3,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_08",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_08.wav",
+          "pre_roll_sec": 0.8,
+          "content_sec": 1.2,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        },
+        {
+          "case_id": "meili_flute_m9_n1_case_09",
+          "piece_id": "meili_flute",
+          "anchor_id": "m9_n1",
+          "query_wav": "queries/meili_flute/m9_n1/case_09.wav",
+          "pre_roll_sec": 0.9,
+          "content_sec": 1.1,
+          "query_duration_sec": 2.0,
+          "template_sec": 12.197059785056954,
+          "expected_start_note": {
+            "measure": 9,
+            "note_index_in_measure": 1
+          },
+          "expected_note_event": {
+            "note_id": "P1_m9_n5",
+            "measure": 9,
+            "beat": 1.0,
+            "pitch_midi": 70,
+            "start_sec": 12.197059785056954
+          }
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "winter_1973_m5_n1_case_00",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_00.wav",
+      "pre_roll_sec": 0.0,
+      "content_sec": 2.0,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_01",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_01.wav",
+      "pre_roll_sec": 0.1,
+      "content_sec": 1.9,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_02",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_02.wav",
+      "pre_roll_sec": 0.2,
+      "content_sec": 1.8,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_03",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_03.wav",
+      "pre_roll_sec": 0.3,
+      "content_sec": 1.7,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_04",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_04.wav",
+      "pre_roll_sec": 0.4,
+      "content_sec": 1.6,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_05",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_05.wav",
+      "pre_roll_sec": 0.5,
+      "content_sec": 1.5,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_06",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_06.wav",
+      "pre_roll_sec": 0.6,
+      "content_sec": 1.4,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_07",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_07.wav",
+      "pre_roll_sec": 0.7,
+      "content_sec": 1.3,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_08",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_08.wav",
+      "pre_roll_sec": 0.8,
+      "content_sec": 1.2,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "winter_1973_m5_n1_case_09",
+      "piece_id": "winter_1973",
+      "anchor_id": "m5_n1",
+      "query_wav": "queries/winter_1973/m5_n1/case_09.wav",
+      "pre_roll_sec": 0.9,
+      "content_sec": 1.1,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.034597569364824,
+      "expected_start_note": {
+        "measure": 5,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m5_n4",
+        "measure": 5,
+        "beat": 1.0,
+        "pitch_midi": 57,
+        "start_sec": 4.034597569364824
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_00",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_00.wav",
+      "pre_roll_sec": 0.0,
+      "content_sec": 2.0,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_01",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_01.wav",
+      "pre_roll_sec": 0.1,
+      "content_sec": 1.9,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_02",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_02.wav",
+      "pre_roll_sec": 0.2,
+      "content_sec": 1.8,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_03",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_03.wav",
+      "pre_roll_sec": 0.3,
+      "content_sec": 1.7,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_04",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_04.wav",
+      "pre_roll_sec": 0.4,
+      "content_sec": 1.6,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_05",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_05.wav",
+      "pre_roll_sec": 0.5,
+      "content_sec": 1.5,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_06",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_06.wav",
+      "pre_roll_sec": 0.6,
+      "content_sec": 1.4,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_07",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_07.wav",
+      "pre_roll_sec": 0.7,
+      "content_sec": 1.3,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_08",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_08.wav",
+      "pre_roll_sec": 0.8,
+      "content_sec": 1.2,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "viktor_tale_m3_n1_case_09",
+      "piece_id": "viktor_tale",
+      "anchor_id": "m3_n1",
+      "query_wav": "queries/viktor_tale/m3_n1/case_09.wav",
+      "pre_roll_sec": 0.9,
+      "content_sec": 1.1,
+      "query_duration_sec": 2.0,
+      "template_sec": 4.3717798698426735,
+      "expected_start_note": {
+        "measure": 3,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m3_n2",
+        "measure": 3,
+        "beat": 1.0,
+        "pitch_midi": 76,
+        "start_sec": 5.948477917482783
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_00",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_00.wav",
+      "pre_roll_sec": 0.0,
+      "content_sec": 2.0,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_01",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_01.wav",
+      "pre_roll_sec": 0.1,
+      "content_sec": 1.9,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_02",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_02.wav",
+      "pre_roll_sec": 0.2,
+      "content_sec": 1.8,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_03",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_03.wav",
+      "pre_roll_sec": 0.3,
+      "content_sec": 1.7,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_04",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_04.wav",
+      "pre_roll_sec": 0.4,
+      "content_sec": 1.6,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_05",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_05.wav",
+      "pre_roll_sec": 0.5,
+      "content_sec": 1.5,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_06",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_06.wav",
+      "pre_roll_sec": 0.6,
+      "content_sec": 1.4,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_07",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_07.wav",
+      "pre_roll_sec": 0.7,
+      "content_sec": 1.3,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_08",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_08.wav",
+      "pre_roll_sec": 0.8,
+      "content_sec": 1.2,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    },
+    {
+      "case_id": "meili_flute_m9_n1_case_09",
+      "piece_id": "meili_flute",
+      "anchor_id": "m9_n1",
+      "query_wav": "queries/meili_flute/m9_n1/case_09.wav",
+      "pre_roll_sec": 0.9,
+      "content_sec": 1.1,
+      "query_duration_sec": 2.0,
+      "template_sec": 12.197059785056954,
+      "expected_start_note": {
+        "measure": 9,
+        "note_index_in_measure": 1
+      },
+      "expected_note_event": {
+        "note_id": "P1_m9_n5",
+        "measure": 9,
+        "beat": 1.0,
+        "pitch_midi": 70,
+        "start_sec": 12.197059785056954
+      }
+    }
+  ]
+}

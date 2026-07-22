@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "description": "开始点识别测试集：Sibelius template 参考音频 + 手工锚点 StartNoteRef",
+  "query_duration_sec": 2.0,
+  "pre_roll_sec": [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+  "sample_rate": 22050,
+  "pieces": [
+    {
+      "piece_id": "winter_1973",
+      "title": "1973年的冬天",
+      "score_id": "winter_1973",
+      "template_id": "winter_1973_clarinet",
+      "audio_glob": "*1973*Clarinet*.mp3",
+      "musicxml_glob": "*1973*Clarinet*.musicxml",
+      "anchors": [
+        {
+          "anchor_id": "m5_n1",
+          "start_note": { "measure": 5, "note_index_in_measure": 1 },
+          "comment": "第 5 小节第一个可演奏音"
+        }
+      ]
+    },
+    {
+      "piece_id": "viktor_tale",
+      "title": "VIKTOR'S TALE",
+      "score_id": "viktor_tale",
+      "template_id": "viktor_tale_clarinet",
+      "audio_glob": "*VIKTOR*.mp3",
+      "musicxml_glob": "*VIKTOR*.musicxml",
+      "anchors": [
+        {
+          "anchor_id": "m3_n1",
+          "start_note": { "measure": 3, "note_index_in_measure": 1 },
+          "comment": "第 3 小节第一个可演奏音"
+        }
+      ]
+    },
+    {
+      "piece_id": "meili_flute",
+      "title": "美丽心情",
+      "score_id": "meili_flute",
+      "template_id": "meili_flute_1_2",
+      "audio_glob": "*Flute 1,2*.mp3",
+      "musicxml_glob": "*Flute 1,2*.musicxml",
+      "anchors": [
+        {
+          "anchor_id": "m9_n1",
+          "start_note": { "measure": 9, "note_index_in_measure": 1 },
+          "comment": "第 9 小节第一个可演奏音（跟谱 interval 起点）"
+        }
+      ]
+    }
+  ]
+}

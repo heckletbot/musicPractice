@@ -1,0 +1,38 @@
+{
+  "case_id": "viktor_tale__pos05_m46n4",
+  "status": "draft",
+  "suite": "start_detect_played",
+  "piece_id": "viktor_tale",
+  "score_id": "viktor_tale",
+  "template_id": "viktor_tale_clarinet",
+  "position_rank": 5,
+  "note_global_index": 374,
+  "start_note": {
+    "measure": 46,
+    "note_index_in_measure": 4
+  },
+  "score_onset_sec": 110.81632653061205,
+  "pitch": "B4",
+  "pitch_midi": 69,
+  "played_source": "23.VIKTOR'S TALE---单簧管.mp3",
+  "t0_performance_sec": 96.03016344400127,
+  "t0_estimation": {
+    "method": "linear_from_piece_first_fit_to_audio",
+    "piece_first_performance_sec": 1.5,
+    "tempo_scale": 0.8899093196457389,
+    "note": "推算值：把谱面时段线性拉伸到真吹剩余时长；请听审后修正"
+  },
+  "query": {
+    "performance_start_sec": 96.03016344400127,
+    "duration_sec": 2.0,
+    "pre_silence_sec": 0.0,
+    "sample_rate": 22050,
+    "wav": "queries/viktor_tale__pos05_m46n4.wav",
+    "review_wav": "clips/viktor_tale__pos05_m46n4__review.wav"
+  },
+  "gt": {
+    "should_start": true,
+    "align_tol_sec": 1.0,
+    "template_sec": null
+  }
+}

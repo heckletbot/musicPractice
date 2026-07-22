@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "description": "played 开始点 query 初稿；请人工听审 labels，全部 status=corrected 后再跑测试",
+  "anchors_source": "../anchors.json",
+  "sample_rate": 22050,
+  "query_duration_sec": 2.0,
+  "cases": [
+    {
+      "case_id": "winter_1973__piece_first__pre0.0",
+      "label": "labels/winter_1973__piece_first__pre0.0.json",
+      "wav": "queries/winter_1973__piece_first__pre0.0.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "winter_1973__piece_first__pre0.3",
+      "label": "labels/winter_1973__piece_first__pre0.3.json",
+      "wav": "queries/winter_1973__piece_first__pre0.3.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "winter_1973__piece_first__pre0.6",
+      "label": "labels/winter_1973__piece_first__pre0.6.json",
+      "wav": "queries/winter_1973__piece_first__pre0.6.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "winter_1973__piece_first__pre0.9",
+      "label": "labels/winter_1973__piece_first__pre0.9.json",
+      "wav": "queries/winter_1973__piece_first__pre0.9.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "viktor_tale__piece_first__pre0.0",
+      "label": "labels/viktor_tale__piece_first__pre0.0.json",
+      "wav": "queries/viktor_tale__piece_first__pre0.0.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "viktor_tale__piece_first__pre0.3",
+      "label": "labels/viktor_tale__piece_first__pre0.3.json",
+      "wav": "queries/viktor_tale__piece_first__pre0.3.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "viktor_tale__piece_first__pre0.6",
+      "label": "labels/viktor_tale__piece_first__pre0.6.json",
+      "wav": "queries/viktor_tale__piece_first__pre0.6.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "viktor_tale__piece_first__pre0.9",
+      "label": "labels/viktor_tale__piece_first__pre0.9.json",
+      "wav": "queries/viktor_tale__piece_first__pre0.9.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "meili_flute__piece_first__pre0.0",
+      "label": "labels/meili_flute__piece_first__pre0.0.json",
+      "wav": "queries/meili_flute__piece_first__pre0.0.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "meili_flute__piece_first__pre0.3",
+      "label": "labels/meili_flute__piece_first__pre0.3.json",
+      "wav": "queries/meili_flute__piece_first__pre0.3.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "meili_flute__piece_first__pre0.6",
+      "label": "labels/meili_flute__piece_first__pre0.6.json",
+      "wav": "queries/meili_flute__piece_first__pre0.6.wav",
+      "status": "draft"
+    },
+    {
+      "case_id": "meili_flute__piece_first__pre0.9",
+      "label": "labels/meili_flute__piece_first__pre0.9.json",
+      "wav": "queries/meili_flute__piece_first__pre0.9.wav",
+      "status": "draft"
+    }
+  ],
+  "counts": {
+    "total": 12,
+    "draft": 12,
+    "corrected": 0
+  }
+}

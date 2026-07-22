@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "suite": "rhythm_played",
+  "piece_id": "meili_flute",
+  "source_played": null,
+  "source_musicxml": null,
+  "tempo_bpm": 152.0,
+  "start_note": {
+    "measure": 29,
+    "note_index_in_measure": 1
+  },
+  "start_note_id": "P1_m29_n34",
+  "score_t0_sec": 38.8815789473684,
+  "played_t0_anchor_sec": 42.0,
+  "played_t0_override_sec": null,
+  "played_t0_sec": 42.76009070294785,
+  "played_t0_refine_shift_sec": 0.7600907029478492,
+  "pre_roll_sec": 0.2,
+  "window_sec": 12.0,
+  "wav_offset_sec": 0.20000000000000284,
+  "sample_rate": 22050,
+  "query": {
+    "wav": "window.wav",
+    "duration_sec": 12.2
+  },
+  "expected_notes": [
+    {
+      "onset_sec": 0.20000000000000284,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 70.0,
+      "measure": 29,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m29_n34"
+    },
+    {
+      "onset_sec": 0.594736842105263,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 70.0,
+      "measure": 29,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m29_n35"
+    },
+    {
+      "onset_sec": 0.9894736842105232,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 72.0,
+      "measure": 29,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m29_n36"
+    },
+    {
+      "onset_sec": 1.3842105263157833,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 74.0,
+      "measure": 29,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m29_n37"
+    },
+    {
+      "onset_sec": 1.5815789473684134,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 75.0,
+      "measure": 30,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m30_n38"
+    },
+    {
+      "onset_sec": 1.9763157894736736,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 77.0,
+      "measure": 30,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m30_n39"
+    },
+    {
+      "onset_sec": 2.3710526315789338,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 74.0,
+      "measure": 30,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m30_n40"
+    },
+    {
+      "onset_sec": 2.765789473684194,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 70.0,
+      "measure": 30,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m30_n41"
+    },
+    {
+      "onset_sec": 2.963157894736824,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 75.0,
+      "measure": 31,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m31_n42"
+    },
+    {
+      "onset_sec": 3.357894736842084,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 77.0,
+      "measure": 31,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m31_n43"
+    },
+    {
+      "onset_sec": 3.7526315789473443,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 74.0,
+      "measure": 31,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m31_n44"
+    },
+    {
+      "onset_sec": 4.1473684210526045,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 70.0,
+      "measure": 31,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m31_n45"
+    },
+    {
+      "onset_sec": 4.344736842105235,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 75.0,
+      "measure": 32,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m32_n46"
+    },
+    {
+      "onset_sec": 4.739473684210495,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 74.0,
+      "measure": 32,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m32_n47"
+    },
+    {
+      "onset_sec": 5.134210526315755,
+      "duration_sec": 0.5921052631578947,
+      "pitch_midi": 72.0,
+      "measure": 32,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m32_n48"
+    },
+    {
+      "onset_sec": 5.726315789473652,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 70.0,
+      "measure": 33,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m33_n49"
+    },
+    {
+      "onset_sec": 6.121052631578912,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 70.0,
+      "measure": 33,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m33_n50"
+    },
+    {
+      "onset_sec": 6.515789473684173,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 72.0,
+      "measure": 33,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m33_n51"
+    },
+    {
+      "onset_sec": 6.910526315789433,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 74.0,
+      "measure": 33,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m33_n52"
+    },
+    {
+      "onset_sec": 7.107894736842063,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 75.0,
+      "measure": 34,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m34_n53"
+    },
+    {
+      "onset_sec": 7.502631578947323,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 79.0,
+      "measure": 34,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m34_n54"
+    },
+    {
+      "onset_sec": 7.897368421052583,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 77.0,
+      "measure": 34,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m34_n55"
+    },
+    {
+      "onset_sec": 8.292105263157843,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 74.0,
+      "measure": 34,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m34_n56"
+    },
+    {
+      "onset_sec": 8.489473684210473,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 82.0,
+      "measure": 35,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m35_n57"
+    },
+    {
+      "onset_sec": 8.884210526315734,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 81.0,
+      "measure": 35,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m35_n58"
+    },
+    {
+      "onset_sec": 9.278947368420994,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 79.0,
+      "measure": 35,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m35_n59"
+    },
+    {
+      "onset_sec": 9.673684210526254,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 77.0,
+      "measure": 35,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m35_n60"
+    },
+    {
+      "onset_sec": 9.871052631578884,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 75.0,
+      "measure": 36,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m36_n61"
+    },
+    {
+      "onset_sec": 10.068421052631514,
+      "duration_sec": 0.19736842105263158,
+      "pitch_midi": 74.0,
+      "measure": 36,
+      "note_index_in_measure": 2,
+      "note_id": "P1_m36_n62"
+    },
+    {
+      "onset_sec": 10.265789473684144,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 72.0,
+      "measure": 36,
+      "note_index_in_measure": 3,
+      "note_id": "P1_m36_n63"
+    },
+    {
+      "onset_sec": 11.055263157894665,
+      "duration_sec": 0.39473684210526316,
+      "pitch_midi": 70.0,
+      "measure": 36,
+      "note_index_in_measure": 4,
+      "note_id": "P1_m36_n64"
+    },
+    {
+      "onset_sec": 11.449999999999925,
+      "duration_sec": 0.7894736842105263,
+      "pitch_midi": 70.0,
+      "measure": 37,
+      "note_index_in_measure": 1,
+      "note_id": "P1_m37_n65"
+    }
+  ],
+  "note_count": 32,
+  "product_rule": "rhythm_ok <=> duration_ok",
+  "comment": "Expected from MusicXML sounding notes starting at m29 (melody entry); t0 refined to expected MIDI near played anchor (~42s)."
+}
