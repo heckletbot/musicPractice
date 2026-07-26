@@ -45,6 +45,16 @@ def _tempo_from_direction(direction: ET.Element) -> float | None:
     return float(per_minute) if per_minute is not None else None
 
 
+def _direction_offset_divs(direction: ET.Element) -> float:
+    offset = _child(direction, "offset")
+    if offset is None or offset.text is None:
+        return 0.0
+    try:
+        return float(offset.text.strip())
+    except ValueError:
+        return 0.0
+
+
 def _pitch_midi(note: ET.Element) -> int | None:
     pitch = _child(note, "pitch")
     if pitch is None:
@@ -68,7 +78,10 @@ def parse_musicxml(
     Timing uses an incremental seconds cursor so mid-score tempo changes do not
     rescale earlier music. Rests advance time but are not emitted; chord notes
     share the current cursor. ``<multiple-rest>`` expands full empty bars.
-    Pitch is stored as **concert** MIDI when ``<transpose>`` is present.
+    Tempo directions honor ``<offset>`` (Sibelius often parks a new metronome at
+    bar-end with a near-full-measure offset while still writing the direction at
+    measure start). Pitch is stored as **concert** MIDI when ``<transpose>`` is
+    present.
     """
 
     root = ET.parse(Path(path)).getroot()
@@ -85,6 +98,9 @@ def parse_musicxml(
         current_div = 0.0
         current_sec = 0.0
         note_index = 0
+        # Onset of the most recent non-chord note; chord tones reuse this cursor.
+        chord_anchor_div = 0.0
+        chord_anchor_sec = 0.0
         # Time signature (defaults 4/4); needed to expand <multiple-rest>.
         beats = 4.0
         beat_type = 4.0
@@ -93,12 +109,46 @@ def parse_musicxml(
         # After consuming a multi-measure rest of N bars, skip the next N-1
         # empty placeholder measures so duration is not double-counted.
         skip_measures = 0
+        # Deferred tempo changes: (absolute divisions, bpm), sorted by div.
+        pending_tempos: list[tuple[float, float]] = []
 
         def _sec_per_quarter() -> float:
             return 60.0 / max(tempo_bpm, 1e-6)
 
-        def _divs_to_sec(dur_div: float) -> float:
-            return (dur_div / divisions) * _sec_per_quarter()
+        def _apply_due_tempos() -> None:
+            nonlocal tempo_bpm
+            while pending_tempos and pending_tempos[0][0] <= current_div + 1e-9:
+                _, tempo_bpm = pending_tempos.pop(0)
+
+        def _advance(dur_div: float) -> float:
+            """Advance the cursor by ``dur_div``, applying mid-span tempo changes."""
+            nonlocal current_div, current_sec, tempo_bpm
+            remaining = float(dur_div)
+            advanced_sec = 0.0
+            while remaining > 1e-12:
+                _apply_due_tempos()
+                next_change = None
+                for at, _bpm in pending_tempos:
+                    if at > current_div + 1e-12:
+                        next_change = at
+                        break
+                if next_change is not None and next_change < current_div + remaining - 1e-12:
+                    chunk = next_change - current_div
+                else:
+                    chunk = remaining
+                sec = (chunk / divisions) * _sec_per_quarter()
+                current_div += chunk
+                current_sec += sec
+                advanced_sec += sec
+                remaining -= chunk
+            _apply_due_tempos()
+            return advanced_sec
+
+        def _schedule_tempo(bpm: float, offset_div: float) -> None:
+            at = current_div + max(0.0, offset_div)
+            pending_tempos.append((at, float(bpm)))
+            pending_tempos.sort(key=lambda item: item[0])
+            _apply_due_tempos()
 
         for measure in _children(part, "measure"):
             if skip_measures > 0:
@@ -110,6 +160,7 @@ def parse_musicxml(
             measure_start_div = current_div
             measure_start_sec = current_sec
             multi_rest_bars = 0
+            _apply_due_tempos()
 
             for item in list(measure):
                 tag = _strip_namespace(item.tag)
@@ -139,17 +190,16 @@ def parse_musicxml(
                 if tag == "direction":
                     tempo = _tempo_from_direction(item)
                     if tempo is not None:
-                        tempo_bpm = tempo
+                        _schedule_tempo(tempo, _direction_offset_divs(item))
                     continue
                 if tag == "backup":
                     dur_div = float(_text(item, "duration", "0") or "0")
+                    # Backup does not re-open earlier tempo history; shift cursor only.
                     current_div -= dur_div
-                    current_sec -= _divs_to_sec(dur_div)
+                    current_sec -= (dur_div / divisions) * _sec_per_quarter()
                     continue
                 if tag == "forward":
-                    dur_div = float(_text(item, "duration", "0") or "0")
-                    current_div += dur_div
-                    current_sec += _divs_to_sec(dur_div)
+                    _advance(float(_text(item, "duration", "0") or "0"))
                     continue
                 if tag != "note":
                     continue
@@ -164,12 +214,21 @@ def parse_musicxml(
                 is_chord = _child(item, "chord") is not None
                 is_rest = _child(item, "rest") is not None
                 is_grace = _child(item, "grace") is not None
-                start_div = current_div
-                start_sec = current_sec
-                duration_sec = _divs_to_sec(dur_div)
-                if not is_chord and not is_grace:
-                    current_div += dur_div
-                    current_sec += duration_sec
+                # MusicXML order: primary note, then <chord/> tones. Primary advances
+                # the cursor; chord tones must keep the primary onset, not the advanced time.
+                if is_chord:
+                    start_div = chord_anchor_div
+                    start_sec = chord_anchor_sec
+                    duration_sec = (dur_div / divisions) * _sec_per_quarter()
+                else:
+                    start_div = current_div
+                    start_sec = current_sec
+                    if not is_grace:
+                        chord_anchor_div = current_div
+                        chord_anchor_sec = current_sec
+                        duration_sec = _advance(dur_div)
+                    else:
+                        duration_sec = (dur_div / divisions) * _sec_per_quarter()
                 if is_rest or is_grace or dur_div <= 0:
                     continue
 
@@ -197,9 +256,7 @@ def parse_musicxml(
             if multi_rest_bars > 0:
                 beat_unit = 4.0 / max(beat_type, 1e-6)
                 measure_divs = beats * beat_unit * divisions
-                measure_sec = _divs_to_sec(measure_divs)
-                current_div = measure_start_div + multi_rest_bars * measure_divs
-                current_sec = measure_start_sec + multi_rest_bars * measure_sec
+                _advance(multi_rest_bars * measure_divs)
                 skip_measures = max(multi_rest_bars - 1, 0)
 
     events.sort(key=lambda event: (event.start_sec, event.measure, event.beat, event.note_id))

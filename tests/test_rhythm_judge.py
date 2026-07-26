@@ -220,6 +220,7 @@ def test_j_trim_flash():
 
 
 def test_j_boundary_no_onset():
+    """No detected peak → onset and duration both fail."""
     notes = [ExpectedNote(onset_sec=0.0, duration_sec=0.5, pitch_midi=69)]
     track = _track_constant(t0=0.0, duration=0.5, midi=69)
     segs = judge_notes(notes, [], track, tempo_bpm=120.0)
@@ -239,13 +240,13 @@ def test_j_boundary_onset_no_pitch():
 
 
 def test_j_timing_onset_only():
+    """Late detected onset fails onset_ok, but duration still uses that peak."""
     cfg = RhythmJudgeConfig()
     notes = [ExpectedNote(onset_sec=0.0, duration_sec=0.5, pitch_midi=69)]
     track = _track_constant(t0=0.4, duration=0.5, midi=69)
     segs = judge_notes(notes, [0.4], track, tempo_bpm=120.0, config=cfg)
     assert segs[0].onset_ok is False
     assert segs[0].duration_ok is True
-    # Onset-only miss does not fail product rhythm.
     assert segs[0].rhythm_ok is True
     assert segs[0].timing_result == "ONSET_ERROR"
 
@@ -259,3 +260,75 @@ def test_j_rest_skipped():
     segs = judge_notes(notes, [0.5], track, tempo_bpm=120.0)
     assert len(segs) == 1
     assert segs[0].onset_expected_sec == 0.5
+
+
+def test_j_score_grid_ignores_detected_onset_for_duration():
+    """score_grid measures duration on expected timeline even if detected onset is wrong/missing."""
+    cfg = RhythmJudgeConfig(duration_window_mode="score_grid")
+    notes = [
+        ExpectedNote(onset_sec=0.0, duration_sec=0.5, pitch_midi=69),
+        ExpectedNote(onset_sec=0.5, duration_sec=0.5, pitch_midi=71),
+    ]
+    # Pitch sits on the score grid; detected onsets are badly shifted / incomplete.
+    merged = {}
+    for fr in _track_constant(t0=0.0, duration=0.5, midi=69).frames:
+        merged[round(fr.time_sec, 6)] = fr
+    for fr in _track_constant(t0=0.5, duration=0.5, midi=71).frames:
+        if fr.voiced:
+            merged[round(fr.time_sec, 6)] = fr
+    track = PitchTrack(
+        sample_rate=SR,
+        frame_size=FRAME,
+        window_duration_sec=WINDOW,
+        frames=[merged[k] for k in sorted(merged)],
+    )
+    segs = judge_notes(notes, [0.35], track, tempo_bpm=120.0, config=cfg)
+    assert segs[0].duration_ok is True
+    assert segs[1].duration_ok is True
+    assert segs[0].rhythm_ok is True
+    assert segs[1].rhythm_ok is True
+    # Missing second detected onset → onset diagnostic fails, but duration still ok.
+    assert segs[1].onset_ok is False
+
+
+def test_j_anchored_grid_uses_pre_post_pads():
+    """anchored_grid keeps standard expected times but searches pre/post pads."""
+    cfg = RhythmJudgeConfig(
+        duration_window_mode="anchored_grid",
+        grid_pre_beat=0.25,
+        grid_post_beat=0.25,
+    )
+    # 16th @120 = 0.125s; pitch for note0 only appears slightly before expected onset.
+    notes = [
+        ExpectedNote(onset_sec=0.1, duration_sec=0.125, pitch_midi=69),
+        ExpectedNote(onset_sec=0.225, duration_sec=0.125, pitch_midi=71),
+    ]
+    frames = []
+    t = 0.0
+    while t < 0.4:
+        # Target pitch for note0 lives in the pre-pad (0.05), not after 0.1 only.
+        if 0.05 <= t < 0.2:
+            midi, name = 69.0, "A4"
+            voiced = True
+        elif 0.2 <= t < 0.35:
+            midi, name = 71.0, "B4"
+            voiced = True
+        else:
+            midi, name, voiced = -1.0, None, False
+        frames.append(
+            PitchFrame(
+                time_sec=t,
+                frequency_hz=440.0 if voiced else None,
+                pitch_midi=midi,
+                pitch=name,
+                voiced=voiced,
+            )
+        )
+        t += WINDOW
+    track = PitchTrack(
+        sample_rate=SR, frame_size=FRAME, window_duration_sec=WINDOW, frames=frames
+    )
+    # Detected onset slightly late but within tolerance — used as reference.
+    segs = judge_notes(notes, [0.12, 0.24], track, tempo_bpm=120.0, config=cfg)
+    assert segs[0].duration_ok is True
+    assert segs[1].duration_ok is True

@@ -3,8 +3,16 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Literal
 
 from music_practice.pitch.config import PitchDetectConfig
+
+# How duration windows are placed on the practice timeline.
+# - detected_onset: [assigned_onset_i, assigned_onset_{i+1}) from spectral-flux peaks
+# - score_grid: [expected.onset_i, expected.onset_{i+1}) after first-note lock
+# - anchored_grid: standard expected times after start-DTW lock; each note uses
+#   [expected - pre, expected + duration + post], combined with detected onset
+DurationWindowMode = Literal["detected_onset", "score_grid", "anchored_grid"]
 
 
 @dataclass(frozen=True)
@@ -45,6 +53,14 @@ class RhythmJudgeConfig:
     duration_half_or_longer_ratio_min: float = 0.8
     duration_quarter_ratio_min: float = 0.5
     duration_ratio_max: float | None = None
+    # detected_onset: duration windows from assigned spectral-flux peaks
+    # score_grid: always use expected.onset (detected onsets are diagnostic only)
+    # anchored_grid: expected timeline after start lock, with pre/post pads; detected
+    # onset recenters the local search when it falls near the expected start.
+    duration_window_mode: DurationWindowMode = "detected_onset"
+    # Pads around each note's standard expected onset (in beats).
+    grid_pre_beat: float = 0.2
+    grid_post_beat: float = 0.35
 
     def onset_tolerance_sec(self, tempo_bpm: float) -> float:
         beat_sec = 60.0 / tempo_bpm if tempo_bpm > 0 else 0.5
@@ -52,3 +68,12 @@ class RhythmJudgeConfig:
 
     def quarter_sec(self, tempo_bpm: float) -> float:
         return 60.0 / tempo_bpm if tempo_bpm > 0 else 0.5
+
+    def beat_sec(self, tempo_bpm: float) -> float:
+        return 60.0 / tempo_bpm if tempo_bpm > 0 else 0.5
+
+    def grid_pre_sec(self, tempo_bpm: float) -> float:
+        return max(0.0, self.grid_pre_beat * self.beat_sec(tempo_bpm))
+
+    def grid_post_sec(self, tempo_bpm: float) -> float:
+        return max(0.0, self.grid_post_beat * self.beat_sec(tempo_bpm))

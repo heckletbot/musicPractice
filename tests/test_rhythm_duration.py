@@ -73,6 +73,28 @@ def test_fast_mode_one_frame():
     assert m.valid_frame_count == 1
 
 
+def test_fast_mode_ignores_too_early_next_onset():
+    """16th-note window must not shrink to one bleed frame when next peak is ~1 frame away."""
+    # onset at 0; next onset at 1 frame; correct pitch appears at 2nd frame (still within 16th).
+    frames = [
+        PitchFrame(time_sec=0.0, frequency_hz=400.0, pitch_midi=70.0, pitch="A#4", voiced=True),
+        PitchFrame(time_sec=WINDOW, frequency_hz=440.0, pitch_midi=69.0, pitch="A4", voiced=True),
+        PitchFrame(time_sec=2 * WINDOW, frequency_hz=440.0, pitch_midi=69.0, pitch="A4", voiced=True),
+    ]
+    track = _track(frames)
+    m = measure_duration(
+        track,
+        onset_sec=0.0,
+        next_onset_sec=WINDOW,  # over-detected: collapses window to first frame only
+        duration_expected_sec=0.129,  # ~16th @116
+        expected_midi=69.0,
+        tempo_bpm=60.0,
+    )
+    assert m.duration_mode == "faster_than_quarter"
+    assert m.duration_ok is True
+    assert m.valid_frame_count >= 1
+
+
 def test_duration_mode_quarter_boundary():
     cfg = RhythmJudgeConfig()
     # Exactly one quarter @120

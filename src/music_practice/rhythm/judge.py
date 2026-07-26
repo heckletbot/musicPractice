@@ -150,6 +150,7 @@ def judge_notes(
     for i, note in enumerate(sounding):
         det = assigned[i]
         next_det = assigned[i + 1] if i + 1 < len(assigned) else None
+        next_exp = sounding[i + 1].onset_sec if i + 1 < len(sounding) else None
 
         onset_ok, onset_error = judge_onset_ok(
             note_index=i,
@@ -161,7 +162,43 @@ def judge_notes(
             config=cfg,
         )
 
-        if det is None:
+        if cfg.duration_window_mode == "score_grid":
+            dur = measure_duration(
+                track,
+                onset_sec=note.onset_sec,
+                next_onset_sec=next_exp,
+                duration_expected_sec=note.duration_sec,
+                expected_midi=note.pitch_midi,
+                tempo_bpm=tempo,
+                config=cfg,
+            )
+        elif cfg.duration_window_mode == "anchored_grid":
+            # Standard expected span after start-DTW lock, with pre/post pads so
+            # neighbor bleed does not steal the only frames; if user onset is
+            # near expected, use it as the closest-frame reference.
+            nominal_end = note.onset_sec + note.duration_sec
+            if next_exp is not None:
+                nominal_end = min(nominal_end, next_exp)
+            pre = cfg.grid_pre_sec(tempo)
+            post = cfg.grid_post_sec(tempo)
+            ref = note.onset_sec
+            if det is not None and abs(float(det) - note.onset_sec) <= cfg.onset_tolerance_sec(
+                tempo
+            ):
+                ref = float(det)
+            dur = measure_duration(
+                track,
+                onset_sec=note.onset_sec,
+                next_onset_sec=nominal_end,
+                duration_expected_sec=note.duration_sec,
+                expected_midi=note.pitch_midi,
+                tempo_bpm=tempo,
+                config=cfg,
+                search_pre_sec=pre,
+                search_post_sec=post,
+                reference_sec=ref,
+            )
+        elif det is None:
             dur = DurationMeasure(
                 duration_detected_sec=0.0,
                 duration_expected_sec=note.duration_sec,
@@ -175,6 +212,7 @@ def judge_notes(
                 duration_ok=False,
             )
         else:
+            # Use assigned peak even when onset_ok is False (diagnostic only).
             dur = measure_duration(
                 track,
                 onset_sec=det,

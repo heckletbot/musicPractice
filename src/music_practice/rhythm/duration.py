@@ -88,11 +88,21 @@ def measure_duration(
     expected_midi: float,
     tempo_bpm: float,
     config: RhythmJudgeConfig | None = None,
+    search_pre_sec: float = 0.0,
+    search_post_sec: float = 0.0,
+    reference_sec: float | None = None,
 ) -> DurationMeasure:
-    """Measure sounding duration relative to expected (quarter-based modes)."""
+    """Measure sounding duration relative to expected (quarter-based modes).
+
+    ``onset_sec`` / ``next_onset_sec`` define the nominal note span.
+    ``search_pre_sec`` / ``search_post_sec`` expand the pitch search around that
+    span (anchored-grid pads). ``reference_sec`` is the time used for
+    closest-frame preference (standard expected onset, or user detected onset).
+    """
     cfg = config or RhythmJudgeConfig()
     quarter = cfg.quarter_sec(tempo_bpm)
     window = track.window_duration_sec
+    ref = float(reference_sec) if reference_sec is not None else float(onset_sec)
 
     if duration_expected_sec <= 0:
         return DurationMeasure(
@@ -111,14 +121,41 @@ def measure_duration(
     faster = duration_expected_sec < quarter
     mode: DurationMode = "faster_than_quarter" if faster else "quarter_or_longer"
 
-    frames = _frames_in_range(track, onset_sec, seg_end)
+    # Fast notes (e.g. 16ths): product rule is ≥1 pitch-matching frame.
+    # Do not let an early next-onset (over-detected peak) shrink the search
+    # window below the expected duration — otherwise the only frame left may
+    # belong to the previous pitch and a valid nearby frame is excluded.
     if faster:
+        min_end = onset_sec + max(duration_expected_sec, window)
+        if seg_end < min_end:
+            seg_end = min_end
+
+    t0 = float(onset_sec) - max(0.0, float(search_pre_sec))
+    t1 = float(seg_end) + max(0.0, float(search_post_sec))
+    if t1 <= t0:
+        t1 = t0 + max(duration_expected_sec, window)
+
+    frames = _frames_in_range(track, t0, t1)
+    if faster:
+        # ≥1 pitch-matching frame in the window (design for 16ths / fast notes).
         valid = 0
+        closest = None
+        closest_dist = None
         for frame in frames:
             if not frame.voiced:
                 continue
+            dist = abs(frame.time_sec - ref)
+            if closest_dist is None or dist < closest_dist:
+                closest = frame
+                closest_dist = dist
             if abs(frame.pitch_midi - expected_midi) <= cfg.duration_pitch_tolerance_semitone:
                 valid += 1
+        # Prefer the frame closest to the reference (expected or user onset).
+        if (
+            closest is not None
+            and abs(closest.pitch_midi - expected_midi) <= cfg.duration_pitch_tolerance_semitone
+        ):
+            valid = max(valid, 1)
         detected = valid * window
         ratio = detected / duration_expected_sec if duration_expected_sec > 0 else None
         ok = valid >= 1

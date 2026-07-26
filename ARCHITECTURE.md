@@ -222,7 +222,65 @@ flowchart TB
 | `ExpectedNote` | 期望 onset、时值、MIDI（或休止） |
 | `RhythmSegment` | 单音判定结果；产品侧节奏通过通常看 `rhythm_ok` / 时值相关字段 |
 
+**产品规则**：`rhythm_ok ⟺ duration_ok`；`onset_ok` 为诊断字段。快于四分音符：窗内 ≥1 帧音高匹配（默认 ±1 半音）即过。
+
+### 5.1 时长窗模式 `duration_window_mode`
+
+配置见 `RhythmJudgeConfig.duration_window_mode`：
+
+| 模式 | 行为 |
+|------|------|
+| `detected_onset`（默认） | 时长窗钉在**分配到的检出起音峰**上 |
+| `score_grid` | 时长窗钉在**谱面期望 onset**上；检出起音仅诊断 |
+| **`anchored_grid`** | 以谱面期望时间为锚；窗为 `[期望−pre, 期望+时值+post]`（默认 pre=0.2 拍、post=0.35 拍）；若检出起音落在容差内，用作窗内参考，**不**整窗跟着错峰漂 |
+
+长段跟谱时，`detected_onset` 易因峰漂移导致后段连锁失败；`anchored_grid` 把判定锚回谱面格子并留前后垫，适合模板全曲回归（见 winter 全曲窗结果）。
+
+调用示例：
+
+```python
+from music_practice.rhythm.config import RhythmJudgeConfig
+from music_practice.rhythm.pipeline import evaluate_rhythm
+
+segs = evaluate_rhythm(
+    expected_notes,
+    tempo_bpm=60.0,
+    wav_path="window.wav",
+    judge_config=RhythmJudgeConfig(duration_window_mode="anchored_grid"),
+)
+```
+
+### 5.2 期望时间轴（MusicXML → note_events）
+
+开始点/节奏夹具的期望秒数来自内嵌 `deps/music2seq` 的 `parse_musicxml`。交付包内解析器已含：
+
+- **和弦同起音**：带 `<chord/>` 的音与主音共享 onset，不再被排成先后半拍
+- **速度记号 offset**：`<metronome>` + `<offset>` 在偏移处生效（例如双纵线处改速，不提前吃掉整小节休止）
+
 流式 `RhythmSession`：缓冲 PCM → 到下一期望音附近再全量判定 → `push` 可能返回单个已关闭音段，`flush` 返回剩余。
+
+### 5.3 空拍前后双校准（rest re-anchor）
+
+模块：`music_practice.rhythm.reanchor`（`apply_rest_reanchors`）。
+
+在调用 `judge_notes` / `evaluate_rhythm*` **之前**，若相邻发音音之间存在足够长的谱面空拍（默认 ≥ 0.5 拍），可对期望时间线做分段校正：
+
+```mermaid
+flowchart LR
+  A["前一音期望结束"] --> B["校准前音结束<br/>pitch 释放点"]
+  B --> C["空拍开始 = 结束点"]
+  C --> D["空拍后搜索下一音起音"]
+  D --> E["平移后续 ExpectedNote.onset"]
+```
+
+| 步骤 | 输出 |
+|------|------|
+| 前音结束 | `prev_note_end_detected_sec` |
+| 空拍起 | `rest_start_sec`（= 前音结束） |
+| 新音起 | `detected_sec`；`shift_sec` 作用于该音及之后所有期望 onset |
+
+特点：只扫已有 `PitchTrack` 帧，**不**重跑整曲 pyin；前音结束搜索硬上限为下一音期望起音之前，避免锁到后音。  
+配置：`RestReanchorConfig`（`min_rest_beat`、搜索窗拍数、音高容差等）。详见 [CHANGELOG_RHYTHM.md](CHANGELOG_RHYTHM.md)。
 
 ---
 
@@ -272,3 +330,4 @@ sequenceDiagram
 
 - 安装与用法：[README.md](README.md)
 - 自测用例：[TESTING.md](TESTING.md)
+- 节奏 / 谱面时间轴更新：[CHANGELOG_RHYTHM.md](CHANGELOG_RHYTHM.md)

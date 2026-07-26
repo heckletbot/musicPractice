@@ -57,7 +57,8 @@ tests/           # 验证通过的用例与音频夹具
 
 ## 项目分析
 
-模块数据流、输入与输出见 [ARCHITECTURE.md](ARCHITECTURE.md)。
+模块数据流、输入与输出见 [ARCHITECTURE.md](ARCHITECTURE.md)。  
+节奏窗模式 `anchored_grid`、空拍前后双校准（rest re-anchor）与 MusicXML 时间轴矫正见 [CHANGELOG_RHYTHM.md](CHANGELOG_RHYTHM.md) / [ARCHITECTURE.md §5.3](ARCHITECTURE.md)。
 
 ## 自测
 
@@ -66,5 +67,11 @@ tests/           # 验证通过的用例与音频夹具
 ```bash
 pip install -e ".[dev]"
 python -m pytest tests/ -v
+```
+
+Winter 全曲 `anchored_grid` 可选回归：
+
+```bash
+python scripts/eval_winter_full_anchored_grid.py
 ```
 

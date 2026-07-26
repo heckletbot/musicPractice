@@ -5,15 +5,23 @@ from music_practice.rhythm.duration import DurationMeasure, measure_duration
 from music_practice.rhythm.judge import ExpectedNote, RhythmSegment, judge_notes
 from music_practice.rhythm.onset import detect_onsets, detect_onsets_audio
 from music_practice.rhythm.pipeline import evaluate_rhythm, evaluate_rhythm_from_track
+from music_practice.rhythm.reanchor import (
+    RestReanchorConfig,
+    RestReanchorEvent,
+    apply_rest_reanchors,
+)
 from music_practice.rhythm.session import RhythmSession
 
 __all__ = [
     "DurationMeasure",
     "ExpectedNote",
     "OnsetDetectConfig",
+    "RestReanchorConfig",
+    "RestReanchorEvent",
     "RhythmJudgeConfig",
     "RhythmSegment",
     "RhythmSession",
+    "apply_rest_reanchors",
     "detect_onsets",
     "detect_onsets_audio",
     "evaluate_rhythm",
