@@ -66,4 +66,6 @@ adjusted, events = apply_rest_reanchors(
 
 - `src/music_practice/rhythm/reanchor.py`（新建）
 - `src/music_practice/rhythm/__init__.py`（导出）
-- `tests/test_rhythm_reanchor.py`
+- `tests/test_rhythm_reanchor.py`（合成 pitch 轨单测，无外部录音）
+
+**交付范围说明**：本包只合入上述库代码与单元测试。离线 Tp / 小幸运等实验录音、按小节结果表、实验脚本产出物**不在**交付包内。

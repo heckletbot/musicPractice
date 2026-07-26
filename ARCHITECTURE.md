@@ -282,6 +282,21 @@ flowchart LR
 特点：只扫已有 `PitchTrack` 帧，**不**重跑整曲 pyin；前音结束搜索硬上限为下一音期望起音之前，避免锁到后音。  
 配置：`RestReanchorConfig`（`min_rest_beat`、搜索窗拍数、音高容差等）。详见 [CHANGELOG_RHYTHM.md](CHANGELOG_RHYTHM.md)。
 
+典型接入（在节奏判定前）：
+
+```python
+from music_practice.rhythm import RestReanchorConfig, apply_rest_reanchors
+from music_practice.rhythm.pipeline import evaluate_rhythm_from_track
+
+adjusted, events = apply_rest_reanchors(
+    expected_notes, pitch_track, tempo_bpm=tempo,
+    config=RestReanchorConfig(enabled=True),
+)
+segs = evaluate_rhythm_from_track(
+    adjusted, detected_onsets, pitch_track, tempo_bpm=tempo, judge_config=judge_cfg,
+)
+```
+
 ---
 
 ## 6. 端到端业务串联（推荐调用顺序）

@@ -84,4 +84,6 @@ python -m pytest tests/test_rhythm_reanchor.py -v
 
 覆盖：空拍后平移后续期望 onset、前音结束校准、关闭时 noop。说明见 [ARCHITECTURE.md §5.3](ARCHITECTURE.md)。
 
+> 交付包不含 Tp / 小幸运等离线实验录音与结果文件；空拍双校准以本单元测试为准。
+
 
