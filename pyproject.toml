@@ -8,14 +8,28 @@ version = "0.1.0"
 description = "MusicXML practice score import, pitch, start detect, and rhythm evaluation"
 readme = "README.md"
 requires-python = ">=3.10"
-dependencies = [
+# 默认仅契约 + MusicXML 转换（标准库）。音频识别见 optional [audio]。
+dependencies = []
+
+[project.optional-dependencies]
+# MusicXML → ScoreData（无第三方依赖；显式分组便于文档/CI）
+score = []
+# 音高 / 节奏 / recognize()
+audio = [
     "numpy>=1.24",
     "librosa>=0.10",
     "soundfile>=0.12",
+    "scipy>=1.10",
 ]
-
-[project.optional-dependencies]
-dev = ["pytest>=7.0"]
+# 开发与回归
+dev = [
+    "pytest>=7.0",
+    "music-practice[audio]",
+]
+# 全量（不含 music2seq；开始点需另装 deps/music2seq）
+all = [
+    "music-practice[audio]",
+]
 
 [tool.setuptools.packages.find]
 where = ["src"]

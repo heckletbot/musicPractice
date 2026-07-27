@@ -32,6 +32,7 @@ python -m pytest tests/ -v
 
 | 模块                    | 命令                                                                                                                                      | 说明                            |
 | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------- |
+| 契约解耦（ScoreData / convert / recognize） | `python -m pytest tests/test_contract_interface.py tests/test_score_convert_standalone.py tests/test_recognize_decoupled.py -v` | 固定接口；见 [SCORE_INTERFACE.md](./SCORE_INTERFACE.md) |
 | 节奏（合成，无 WAV）          | `python -m pytest tests/test_rhythm_judge.py tests/test_rhythm_duration.py tests/test_rhythm_onset.py tests/test_rhythm_pipeline.py tests/test_rhythm_reanchor.py -v` | 判定 / 时值 / onset / 链路（含 `anchored_grid`）/ 空拍双校准 |
 | 节奏（模板窗 winter）        | `python -m pytest tests/test_rhythm_template_winter.py -v`                                                                              | 需 `fixtures/rhythm_template/` |
 | 节奏（流式 winter）         | `python -m pytest tests/test_rhythm_session_winter_stream.py -v`                                                                        | 需同上                           |
@@ -72,7 +73,7 @@ python scripts/eval_winter_full_anchored_grid.py
 - `tests/results/winter_1973_full_by_measure_anchored_grid.md`
 - `tests/results/rhythm_template_winter_full_anchored_grid.json`
 
-说明见 [ARCHITECTURE.md §5.1](ARCHITECTURE.md)（`anchored_grid` 窗模式）。
+说明见 [ARCHITECTURE.md §5.1](./ARCHITECTURE.md)（`anchored_grid` 窗模式）。
 
 ## 6. 空拍前后双校准（单元）
 
@@ -82,7 +83,7 @@ python scripts/eval_winter_full_anchored_grid.py
 python -m pytest tests/test_rhythm_reanchor.py -v
 ```
 
-覆盖：空拍后平移后续期望 onset、前音结束校准、关闭时 noop。说明见 [ARCHITECTURE.md §5.3](ARCHITECTURE.md)。
+覆盖：空拍后平移后续期望 onset、前音结束校准、关闭时 noop。说明见 [ARCHITECTURE.md §5.3](./ARCHITECTURE.md)。
 
 > 交付包不含 Tp / 小幸运等离线实验录音与结果文件；空拍双校准以本单元测试为准。
 

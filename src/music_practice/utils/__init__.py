@@ -1,5 +1,7 @@
 """Public helpers for calling and inspecting music-practice modules."""
 
+from music_practice.recognize import recognize, recognize_from_track
+from music_practice.score import convert_musicxml
 from music_practice.start_detect import (
     AudioFrame,
     StartDetectSession,
@@ -31,6 +33,7 @@ __all__ = [
     "analyze_pitch_segment_from_track",
     "analyze_pitch_track",
     "build_score_intervals",
+    "convert_musicxml",
     "detect_start_note",
     "evaluate_rhythm_audio",
     "evaluate_rhythm_from_track",
@@ -43,6 +46,8 @@ __all__ = [
     "measure_interval_id",
     "observe",
     "parse_score",
+    "recognize",
+    "recognize_from_track",
     "resolve_template_id",
     "score_summary",
     "to_observable_dict",

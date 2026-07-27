@@ -1,8 +1,29 @@
 # 项目分析：数据流与输入输出
 
-`music-practice` 是 **MusicXML 单声部跟谱** Python 库（无 HTTP 服务）。对外统一入口：`from music_practice import utils`。
+`music-practice` 是 **MusicXML 单声部跟谱** Python 库（无 HTTP 服务）。
+
+**解耦**：MusicXML 转换与音频识别通过固定契约 `ScoreData` 通信（见 [SCORE_INTERFACE.md](SCORE_INTERFACE.md)），可单独工作。识别统一入口：`music_practice.recognize.recognize`。兼容入口：`from music_practice import utils`。
 
 本文以**数据流**为主，标明各模块的**输入 / 输出**。开始点识别依赖内嵌包 `deps/music2seq`。
+
+---
+
+## 0. 转换 ↔ 识别契约
+
+```mermaid
+flowchart LR
+  XML[MusicXML] --> Conv[convert_musicxml]
+  Conv --> SD[ScoreData JSON/dict]
+  App[App自有解析] --> SD
+  SD --> Rec[recognize]
+  PCM[PCM float32] --> Rec
+  Rec --> RR[RecognizeResult]
+```
+
+| 函数 | 输入 | 输出 |
+|------|------|------|
+| `score.convert_musicxml` | MusicXML 路径 | `ScoreData` |
+| `recognize.recognize` | `ScoreData` + 音频 + `start_from`/`config` | `RecognizeResult` |
 
 ---
 
@@ -280,7 +301,7 @@ flowchart LR
 | 新音起 | `detected_sec`；`shift_sec` 作用于该音及之后所有期望 onset |
 
 特点：只扫已有 `PitchTrack` 帧，**不**重跑整曲 pyin；前音结束搜索硬上限为下一音期望起音之前，避免锁到后音。  
-配置：`RestReanchorConfig`（`min_rest_beat`、搜索窗拍数、音高容差等）。详见 [CHANGELOG_RHYTHM.md](CHANGELOG_RHYTHM.md)。
+配置：`RestReanchorConfig`（`min_rest_beat`、搜索窗拍数、音高容差等）。详见 [CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md)。
 
 典型接入（在节奏判定前）：
 
@@ -343,6 +364,7 @@ sequenceDiagram
 
 ## 相关文档
 
-- 安装与用法：[README.md](README.md)
-- 自测用例：[TESTING.md](TESTING.md)
-- 节奏 / 谱面时间轴更新：[CHANGELOG_RHYTHM.md](CHANGELOG_RHYTHM.md)
+- 安装与用法：[../README.md](../README.md)
+- 自测用例：[TESTING.md](./TESTING.md)
+- 节奏 / 谱面时间轴更新：[CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md)
+- 转换 ↔ 识别契约：[SCORE_INTERFACE.md](./SCORE_INTERFACE.md)
