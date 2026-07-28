@@ -86,14 +86,52 @@ def _work_title(root: ET.Element) -> str | None:
 
 
 def _tempo_from_direction(direction: ET.Element) -> float | None:
+    """Return tempo as quarter-notes-per-minute (MusicXML sound tempo unit)."""
     sound = _child(direction, "sound")
     if sound is not None and sound.attrib.get("tempo") is not None:
+        # sound/@tempo is defined as quarter notes per minute.
         return float(sound.attrib["tempo"])
-    metronome = next((node for node in direction.iter() if _strip_namespace(node.tag) == "metronome"), None)
+    metronome = next(
+        (node for node in direction.iter() if _strip_namespace(node.tag) == "metronome"),
+        None,
+    )
     if metronome is None:
         return None
     per_minute = _text(metronome, "per-minute")
-    return float(per_minute) if per_minute is not None else None
+    if per_minute is None:
+        return None
+    return _metronome_to_quarter_bpm(metronome, float(per_minute))
+
+
+# MusicXML beat-unit -> length in quarter notes (before dots).
+_BEAT_UNIT_QUARTERS: dict[str, float] = {
+    "maxima": 32.0,
+    "long": 16.0,
+    "breve": 8.0,
+    "whole": 4.0,
+    "half": 2.0,
+    "quarter": 1.0,
+    "eighth": 0.5,
+    "16th": 0.25,
+    "32nd": 0.125,
+    "64th": 0.0625,
+    "128th": 0.03125,
+    "256th": 0.015625,
+    "512th": 0.0078125,
+    "1024th": 0.00390625,
+}
+
+
+def _metronome_to_quarter_bpm(metronome: ET.Element, per_minute: float) -> float:
+    """Convert visual metronome (beat-unit[+dot*] = N) to quarter-note BPM."""
+    unit = (_text(metronome, "beat-unit") or "quarter").strip().lower()
+    quarters = _BEAT_UNIT_QUARTERS.get(unit, 1.0)
+    # Each beat-unit-dot multiplies duration by 3/2 (single / double / ... dots).
+    dots = sum(1 for node in list(metronome) if _strip_namespace(node.tag) == "beat-unit-dot")
+    if dots:
+        quarters *= (1.5**dots)
+    # N metronome-beats/min * quarters/metronome-beat = quarters/min.
+    return float(per_minute) * float(quarters)
 
 
 def _apply_attributes(attributes: ET.Element, ctx: ParseContext) -> None:

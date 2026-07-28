@@ -36,6 +36,7 @@ python -m pytest tests/ -v
 | 节奏（合成，无 WAV）          | `python -m pytest tests/test_rhythm_judge.py tests/test_rhythm_duration.py tests/test_rhythm_onset.py tests/test_rhythm_pipeline.py tests/test_rhythm_reanchor.py -v` | 判定 / 时值 / onset / 链路（含 `anchored_grid`）/ 空拍双校准 |
 | 节奏（模板窗 winter）        | `python -m pytest tests/test_rhythm_template_winter.py -v`                                                                              | 需 `fixtures/rhythm_template/` |
 | 节奏（流式 winter）         | `python -m pytest tests/test_rhythm_session_winter_stream.py -v`                                                                        | 需同上                           |
+| MusicXML 附点节拍器 → 四分 BPM | `python -m pytest tests/test_score_tempo_metronome.py -q` | 六八拍 `附点四分=N` |
 | MusicXML 解析（和弦/速度 offset） | `python -m pytest deps/music2seq/tests/test_score_locator.py -v`                                                                     | 内嵌 music2seq                    |
 | 开始点夹具结构               | `python -m pytest tests/test_start_detect_dataset.py -v`                                                                                | 检查 manifest / 文件是否齐全          |
 | 开始点模板（meili + viktor） | `python -m pytest tests/test_start_detect.py -v`                                                                                        |                               |

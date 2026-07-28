@@ -1,5 +1,12 @@
 # 节奏 / 谱面时间轴 — 交付更新说明
 
+## MusicXML 附点节拍器 → 四分 BPM（`score/parser.py`）
+
+- 问题：六八拍等常见写法 `附点四分 = N`（`beat-unit` + `beat-unit-dot` + `per-minute`）被误当成「四分音符 = N」，时间轴拉长约 1.5 倍。
+- 修复：`_tempo_from_direction` / `_metronome_to_quarter_bpm` 按拍号单位（含附点）换算为 **四分音符 BPM**（MusicXML `sound/@tempo` 语义）；`sound/@tempo` 仍优先且视为已是四分 BPM。
+- 单测：`tests/test_score_tempo_metronome.py`
+- 例：附点四分 = 67 → 四分 BPM 100.5
+
 ## `anchored_grid` 时长窗模式
 
 - 配置：`RhythmJudgeConfig.duration_window_mode = "anchored_grid"`
