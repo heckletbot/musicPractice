@@ -2,12 +2,12 @@ from __future__ import annotations
 
 import numpy as np
 
-from music2seq.locator.core import _to_candidate
-from music2seq.matcher.dtw import subsequence_dtw_global_topk
-from music2seq.matcher.global_match import GlobalMatchResult
-from music2seq.score import load_note_events, parse_musicxml, save_note_events
-from music2seq.score.calibrate import calibrate_note_events_to_template
-from music2seq.types import NoteEvent
+from music_practice.start_match.locator.core import _to_candidate
+from music_practice.start_match.matcher.dtw import subsequence_dtw_global_topk
+from music_practice.start_match.matcher.global_match import GlobalMatchResult
+from music_practice.start_match.score import load_note_events, parse_musicxml, save_note_events
+from music_practice.start_match.score.calibrate import calibrate_note_events_to_template
+from music_practice.start_match.types import NoteEvent
 
 
 def test_parse_musicxml_and_store_roundtrip(tmp_path):

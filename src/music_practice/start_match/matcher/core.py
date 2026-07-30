@@ -8,13 +8,13 @@ from typing import Literal
 
 import numpy as np
 
-from music2seq.features.extractor import standardize_with_template_stats, wav_to_mel
-from music2seq.features.pitch_extractor import wav_to_pitch_sequence
-from music2seq.features.preprocess import pitch_preprocess_config
-from music2seq.matcher.dtw import coarse_mel_candidates, subsequence_dtw
-from music2seq.matcher.global_match import GlobalMatchConfig, match_global_sequences
-from music2seq.template.store import TemplatePackage, load_template
-from music2seq.types import (
+from music_practice.start_match.features.extractor import standardize_with_template_stats, wav_to_mel
+from music_practice.start_match.features.pitch_extractor import wav_to_pitch_sequence
+from music_practice.start_match.features.preprocess import pitch_preprocess_config
+from music_practice.start_match.matcher.dtw import coarse_mel_candidates, subsequence_dtw
+from music_practice.start_match.matcher.global_match import GlobalMatchConfig, match_global_sequences
+from music_practice.start_match.template.store import TemplatePackage, load_template
+from music_practice.start_match.types import (
     FEATURE_KIND_PITCH,
     MatchCandidate,
     MatchResult,

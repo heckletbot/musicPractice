@@ -1,13 +1,21 @@
-"""Bridge between internal Score models and the fixed ScoreData contract."""
+"""Bridge between internal models and fixed ScoreData / PitchTrackData contracts."""
 
 from __future__ import annotations
 
 from collections import defaultdict
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 
-from music_practice.contract.schema import SCORE_DATA_SCHEMA, SCORE_DATA_VERSION
-from music_practice.contract.validate import validate_score_data
+from music_practice.contract.schema import (
+    PITCH_TRACK_DATA_SCHEMA,
+    PITCH_TRACK_DATA_VERSION,
+    SCORE_DATA_SCHEMA,
+    SCORE_DATA_VERSION,
+)
+from music_practice.contract.validate import validate_pitch_track_data, validate_score_data
 from music_practice.models import Interval, ParsedNote, Score
+
+if TYPE_CHECKING:
+    from music_practice.pitch.detector import PitchTrack
 
 
 def score_to_score_data(score: Score) -> dict[str, Any]:
@@ -128,3 +136,52 @@ def slice_practice_notes(
         "note_index": int(validated["notes"][idx]["note_index_in_measure"]),
     }
     return sliced, resolved
+
+
+def pitch_track_to_pitch_track_data(track: PitchTrack) -> dict[str, Any]:
+    """Convert an in-memory ``PitchTrack`` into validated PitchTrackData.
+
+    Imports ``PitchTrack`` only when called so ``music_practice.contract`` stays
+    free of audio-stack imports at module load time.
+    """
+    payload = {
+        "schema": PITCH_TRACK_DATA_SCHEMA,
+        "schema_version": PITCH_TRACK_DATA_VERSION,
+        **track.to_dict(),
+    }
+    return validate_pitch_track_data(payload)
+
+
+def pitch_track_data_to_pitch_track(data: Mapping[str, Any]) -> PitchTrack:
+    """Build an internal ``PitchTrack`` from PitchTrackData."""
+    # Lazy import: avoid pulling librosa when only ScoreData tools are used.
+    from music_practice.pitch.detector import PitchFrame, PitchTrack as PitchTrackCls
+
+    validated = validate_pitch_track_data(data)
+    frames = [
+        PitchFrame(
+            time_sec=float(item["time_sec"]),
+            frequency_hz=None if item["frequency_hz"] is None else float(item["frequency_hz"]),
+            pitch_midi=float(item["pitch_midi"]),
+            pitch=None if item["pitch"] is None else str(item["pitch"]),
+            voiced=bool(item["voiced"]),
+        )
+        for item in validated["frames"]
+    ]
+    return PitchTrackCls(
+        sample_rate=int(validated["sample_rate"]),
+        frame_size=int(validated["frame_size"]),
+        window_duration_sec=float(validated["window_duration_sec"]),
+        frames=frames,
+    )
+
+
+def coerce_pitch_track(track: PitchTrack | Mapping[str, Any]) -> PitchTrack:
+    """Accept PitchTrack or PitchTrackData mapping; return internal PitchTrack."""
+    from music_practice.pitch.detector import PitchTrack as PitchTrackCls
+
+    if isinstance(track, PitchTrackCls):
+        return track
+    if isinstance(track, Mapping):
+        return pitch_track_data_to_pitch_track(track)
+    raise TypeError("track must be PitchTrack or PitchTrackData mapping")

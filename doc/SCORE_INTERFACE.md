@@ -276,7 +276,7 @@ JSON 可序列化 `dict`。`schema` + `schema_version` 用于演进校验。
 | `pip install -e .` | 契约 + MusicXML 转换（标准库 XML，无 librosa） |
 | `pip install -e ".[audio]"` | 上述 + 音高 / 节奏 / `recognize` |
 | `pip install -e ".[dev]"` | audio + pytest |
-| `deps/music2seq` 另装 | 仅开始点模板匹配需要 |
+| `pip install -e ".[start]"` | 开始点模板匹配（`start_match`） |
 
 验证：
 

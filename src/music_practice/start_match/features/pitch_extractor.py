@@ -8,8 +8,8 @@ from pathlib import Path
 import librosa
 import numpy as np
 
-from music2seq.features.preprocess import PreprocessConfig, apply_preprocess, load_and_preprocess_for_pitch, pitch_preprocess_config
-from music2seq.types import PitchFeatureConfig
+from music_practice.start_match.features.preprocess import PreprocessConfig, apply_preprocess, load_and_preprocess_for_pitch, pitch_preprocess_config
+from music_practice.start_match.types import PitchFeatureConfig
 
 
 @dataclass

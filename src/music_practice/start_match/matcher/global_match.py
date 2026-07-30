@@ -8,19 +8,19 @@ from typing import Any, Literal
 
 import numpy as np
 
-from music2seq.features.pitch_extractor import (
+from music_practice.start_match.features.pitch_extractor import (
     PitchSequence,
     audio_to_pitch_sequence,
     clip_to_pitch_sequence,
     wav_to_pitch_sequence,
 )
-from music2seq.features.preprocess import PreprocessConfig, pitch_preprocess_config
-from music2seq.matcher.dtw import (
+from music_practice.start_match.features.preprocess import PreprocessConfig, pitch_preprocess_config
+from music_practice.start_match.matcher.dtw import (
     subsequence_dtw_global,
     subsequence_dtw_global_topk,
     subsequence_match_rigid,
 )
-from music2seq.types import PitchFeatureConfig
+from music_practice.start_match.types import PitchFeatureConfig
 
 
 def _shared_minmax(template: np.ndarray, query: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -46,7 +46,7 @@ def normalize_pair(
 ) -> tuple[np.ndarray, np.ndarray]:
     if mode == "shared_minmax":
         return _shared_minmax(template, query)
-    from music2seq.features.extractor import standardize_with_template_stats
+    from music_practice.start_match.features.extractor import standardize_with_template_stats
 
     return standardize_with_template_stats(template, query)
 

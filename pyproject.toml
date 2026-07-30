@@ -14,21 +14,30 @@ dependencies = []
 [project.optional-dependencies]
 # MusicXML → ScoreData（无第三方依赖；显式分组便于文档/CI）
 score = []
-# 音高 / 节奏 / recognize()
-audio = [
+# 仅音高 detect_pitch / PitchTrackData
+pitch = [
     "numpy>=1.24",
     "librosa>=0.10",
     "soundfile>=0.12",
     "scipy>=1.10",
 ]
+# 音高 / 节奏 / recognize()
+audio = [
+    "music-practice[pitch]",
+]
+# 开始点识别（start_detect + start_match）
+start = [
+    "music-practice[audio]",
+]
 # 开发与回归
 dev = [
     "pytest>=7.0",
-    "music-practice[audio]",
+    "music-practice[all]",
 ]
-# 全量（不含 music2seq；开始点需另装 deps/music2seq）
+# 全量：音高/节奏/recognize + 开始点
 all = [
     "music-practice[audio]",
+    "music-practice[start]",
 ]
 
 [tool.setuptools.packages.find]

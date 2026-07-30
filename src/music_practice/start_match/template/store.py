@@ -10,8 +10,8 @@ from typing import Any
 
 import numpy as np
 
-from music2seq.features.preprocess import PreprocessConfig
-from music2seq.types import (
+from music_practice.start_match.features.preprocess import PreprocessConfig
+from music_practice.start_match.types import (
     FEATURE_KIND_MEL,
     FEATURE_KIND_PITCH,
     FeatureConfig,
@@ -20,14 +20,20 @@ from music2seq.types import (
     SCHEMA_VERSION,
     TemplateMeta,
 )
-from music2seq.score.store import load_note_events, save_note_events
+from music_practice.start_match.score.store import load_note_events, save_note_events
 
 
 def project_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+    """Deliver package root (…/music-practice-deliver), not the old deps/ layout."""
+    # start_match/template/store.py → parents[4] = deliver root
+    return Path(__file__).resolve().parents[4]
 
 
 def default_templates_dir() -> Path:
+    """Fallback templates dir under the deliver package root.
+
+    Prefer passing ``templates_dir`` explicitly from start_detect / callers.
+    """
     return project_root() / "templates"
 
 

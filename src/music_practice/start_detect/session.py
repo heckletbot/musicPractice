@@ -7,10 +7,10 @@ from pathlib import Path
 from typing import Literal
 
 import numpy as np
-from music2seq.features.pitch_extractor import PitchSequence
-from music2seq.matcher.global_match import GlobalMatchConfig
-from music2seq.template.store import load_template
-from music2seq.types import NoteEvent
+from music_practice.start_match.features.pitch_extractor import PitchSequence
+from music_practice.start_match.matcher.global_match import GlobalMatchConfig
+from music_practice.start_match.template.store import load_template
+from music_practice.start_match.types import NoteEvent
 
 from music_practice.models import Score
 from music_practice.start_detect.context import StartDetectContext, StartDetectResult

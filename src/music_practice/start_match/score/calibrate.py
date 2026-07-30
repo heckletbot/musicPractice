@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from typing import Any
 
-from music2seq.types import NoteEvent
+from music_practice.start_match.types import NoteEvent
 
 
 @dataclass(frozen=True)

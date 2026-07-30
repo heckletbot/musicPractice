@@ -8,10 +8,10 @@ from typing import Sequence
 import numpy as np
 
 from music_practice.pitch.config import PitchDetectConfig
+from music_practice.pitch.detector import pitch_track_from_audio
 from music_practice.rhythm.config import OnsetDetectConfig, RhythmJudgeConfig
 from music_practice.rhythm.judge import ExpectedNote, RhythmSegment, judge_notes
 from music_practice.rhythm.onset import detect_onsets_audio
-from music_practice.rhythm.pipeline import _pitch_track_from_audio
 from music_practice.start_detect.frame import AudioFrame
 
 
@@ -189,7 +189,7 @@ class RhythmSession:
         pitch_cfg = PitchDetectConfig.for_tempo(
             self._tempo_bpm, sample_rate=self._sample_rate
         )
-        track = _pitch_track_from_audio(self._pcm, pitch_cfg)
+        track = pitch_track_from_audio(self._pcm, pitch_cfg)
         return judge_notes(
             self._expected,
             onsets,

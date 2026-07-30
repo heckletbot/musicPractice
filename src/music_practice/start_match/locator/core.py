@@ -7,15 +7,15 @@ from pathlib import Path
 
 import numpy as np
 
-from music2seq.features.pitch_extractor import PitchSequence, wav_to_pitch_sequence
-from music2seq.features.preprocess import pitch_preprocess_config
-from music2seq.matcher.global_match import (
+from music_practice.start_match.features.pitch_extractor import PitchSequence, wav_to_pitch_sequence
+from music_practice.start_match.features.preprocess import pitch_preprocess_config
+from music_practice.start_match.matcher.global_match import (
     GlobalMatchConfig,
     GlobalMatchResult,
     match_global_sequences_topk,
 )
-from music2seq.template.store import TemplatePackage, load_template
-from music2seq.types import LocateCandidate, LocateContext, LocateResult, NoteEvent, validate_query_duration
+from music_practice.start_match.template.store import TemplatePackage, load_template
+from music_practice.start_match.types import LocateCandidate, LocateContext, LocateResult, NoteEvent, validate_query_duration
 
 
 def _slice_pitch_sequence(seq: PitchSequence, start_sec: float, end_sec: float) -> tuple[PitchSequence, int]:

@@ -2,13 +2,14 @@
 
 MusicXML 单声部跟谱库：谱面导入、音高检测、开始点识别、节奏评测。无 HTTP 服务，通过 Python API 调用。
 
-**MusicXML 转换** 与 **音频识别** 已解耦：二者只通过固定 `ScoreData` 契约交换数据，可单独安装、单独工作。接口见 [doc/SCORE_INTERFACE.md](doc/SCORE_INTERFACE.md)。
+**MusicXML 转换** 与 **音频识别** 已解耦：二者只通过固定 `ScoreData` 契约交换数据，可单独安装、单独工作。接口见 [doc/SCORE_INTERFACE.md](doc/SCORE_INTERFACE.md)。  
+音高检测对外契约见 [doc/PITCH_INTERFACE.md](doc/PITCH_INTERFACE.md)。
 
 ## 依赖与安装
 
 - Python >= 3.10
 - 默认安装：**契约 + MusicXML 转换**（标准库，无 numpy/librosa）
-- 音频识别：额外安装 `[audio]`
+- 音频识别：`[audio]`；开始点：`[start]`（含 audio）
 
 ```bash
 # 仅转换 / 契约
@@ -17,11 +18,11 @@ pip install -e .
 # 识别（音高 / 节奏 / recognize）
 pip install -e ".[audio]"
 
-# 开发回归
-pip install -e ".[dev]"
+# 开始点模板匹配
+pip install -e ".[start]"
 
-# 开始点模板匹配（可选）
-cd deps/music2seq && pip install -e . && cd ../..
+# 全量 + 开发回归
+pip install -e ".[dev]"
 ```
 
 ## 推荐用法（解耦接口）
@@ -62,16 +63,17 @@ python scripts/import_score.py path/to/score.musicxml --score-id my_score
 ```
 doc/             # 项目文档（仅 README 留在根目录）
   SCORE_INTERFACE.md
+  PITCH_INTERFACE.md
   ARCHITECTURE.md
   TESTING.md
   CHANGELOG_RHYTHM.md
-deps/music2seq/  # 内嵌依赖（开始点识别）
 src/music_practice/
-  contract/      # ScoreData 校验 / 桥接（无音频依赖）
+  contract/      # ScoreData / PitchTrackData 校验 / 桥接（无音频依赖）
   score/         # MusicXML → ScoreData
   recognize/     # recognize(score_data, audio, ...)
-  pitch/         # 音高检测
-  start_detect/  # 开始点识别（依赖 music2seq）
+  pitch/         # detect_pitch → PitchTrackData
+  start_match/   # 模板特征 + DTW（原 music2seq）
+  start_detect/  # 开始点识别（依赖 start_match）
   rhythm/        # 节奏 onset / duration / 判定
   utils/         # 统一公开 API（需 audio）
 tests/
@@ -86,7 +88,7 @@ tests/
 
 ```bash
 pip install -e ".[dev]"
-python -m pytest tests/test_contract_interface.py tests/test_score_convert_standalone.py tests/test_recognize_decoupled.py -v
+python -m pytest tests/test_contract_interface.py tests/test_pitch_track_contract.py tests/test_recognize_decoupled.py -v
 python -m pytest tests/ -v
 ```
 

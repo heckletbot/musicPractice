@@ -10,7 +10,7 @@ import librosa
 import numpy as np
 from scipy.signal import butter, sosfiltfilt
 
-from music2seq.features.extractor import load_audio_mono
+from music_practice.start_match.features.extractor import load_audio_mono
 
 
 @dataclass(frozen=True)

@@ -7,7 +7,7 @@ from pathlib import Path
 import librosa
 import numpy as np
 
-from music2seq.types import FeatureConfig
+from music_practice.start_match.types import FeatureConfig
 
 
 def load_audio_mono(path: Path, target_sr: int | None) -> tuple[np.ndarray, int]:

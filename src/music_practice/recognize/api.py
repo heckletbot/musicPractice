@@ -6,10 +6,11 @@ from typing import Any, Mapping, Sequence
 
 import numpy as np
 
-from music_practice.contract.bridge import slice_practice_notes
+from music_practice.contract.bridge import coerce_pitch_track, slice_practice_notes
 from music_practice.contract.schema import RECOGNIZE_RESULT_SCHEMA, RECOGNIZE_RESULT_VERSION
 from music_practice.contract.validate import validate_score_data
-from music_practice.pitch.detector import PitchTrack
+from music_practice.pitch.config import PitchDetectConfig
+from music_practice.pitch.detector import PitchTrack, detect_pitch
 from music_practice.pitch.evaluator import estimate_pitch_from_track
 from music_practice.rhythm.config import OnsetDetectConfig, RhythmJudgeConfig
 from music_practice.rhythm.judge import ExpectedNote, RhythmSegment, judge_notes
@@ -130,24 +131,25 @@ def recognize_from_track(
     score_data: Mapping[str, Any],
     *,
     detected_onsets: Sequence[float],
-    track: PitchTrack,
+    track: PitchTrack | Mapping[str, Any],
     start_from: Mapping[str, Any] | None = None,
     config: Mapping[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """Inject path for tests / offline: ScoreData + onsets + PitchTrack → RecognizeResult."""
+    """Inject path for tests / offline: ScoreData + onsets + PitchTrack(Data) → RecognizeResult."""
     validated = validate_score_data(score_data)
     practice_notes, resolved_start = slice_practice_notes(validated, start_from)
     expected = _expected_from_practice_notes(practice_notes)
     jcfg = _judge_config_from_dict(config)
     tempo = float(validated["tempo"])
-    segs = judge_notes(expected, detected_onsets, track, tempo_bpm=tempo, config=jcfg)
+    pitch_track = coerce_pitch_track(track)
+    segs = judge_notes(expected, detected_onsets, pitch_track, tempo_bpm=tempo, config=jcfg)
     tol = float((config or {}).get("pitch_tolerance_semitones", jcfg.duration_pitch_tolerance_semitone))
 
     out_notes: list[dict[str, Any]] = []
     for exp, seg in zip(expected, segs):
         t0 = seg.onset_detected_sec if seg.onset_detected_sec is not None else seg.onset_expected_sec
         t1 = t0 + max(seg.duration_detected_sec, 1e-3)
-        est = estimate_pitch_from_track(track, t0, t1)
+        est = estimate_pitch_from_track(pitch_track, t0, t1)
         detected = est.pitch_midi if est.valid_frame_count > 0 and est.pitch_midi > 0 else None
         pok = _pitch_ok(expected_midi=exp.pitch_midi, detected_midi=detected, tolerance=tol)
         out_notes.append(
@@ -196,22 +198,21 @@ def recognize(
     tempo = float(validated["tempo"])
     sr = int(sample_rate)
     ocfg = OnsetDetectConfig.for_tempo(tempo, sample_rate=sr)
+
+    # Detect pitch via public API (PitchTrackData), then bridge for rhythm.
+    pitch_cfg = PitchDetectConfig.for_tempo(tempo, sample_rate=sr)
+    pitch_data = detect_pitch(audio, sample_rate=sr, tempo=tempo, config=pitch_cfg)
+    track = coerce_pitch_track(pitch_data)
+
     segs = evaluate_rhythm(
         expected,
         tempo_bpm=tempo,
         audio=audio,
         sample_rate=sr,
+        track=track,
         judge_config=jcfg,
         onset_config=ocfg,
     )
-
-    # Rebuild a pitch track for pitch_ok fields (evaluate_rhythm already ran pyin internally;
-    # re-run for explicit per-note MIDI to keep the public contract stable).
-    from music_practice.pitch.config import PitchDetectConfig
-    from music_practice.rhythm.pipeline import _pitch_track_from_audio
-
-    pitch_cfg = PitchDetectConfig.for_tempo(tempo, sample_rate=sr)
-    track = _pitch_track_from_audio(audio, pitch_cfg)
     tol = float((config or {}).get("pitch_tolerance_semitones", jcfg.duration_pitch_tolerance_semitone))
 
     out_notes: list[dict[str, Any]] = []

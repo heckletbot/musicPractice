@@ -9,7 +9,7 @@ import numpy as np
 
 from music_practice.models import Interval, ParsedNote, Score
 from music_practice.pitch.config import PitchDetectConfig
-from music_practice.pitch.detector import PitchTrack, detect_pitch_track
+from music_practice.pitch.detector import PitchTrack, detect_pitch, detect_pitch_track
 from music_practice.pitch.evaluator import PitchEstimate, estimate_pitch, estimate_pitch_from_track
 from music_practice.rhythm.config import OnsetDetectConfig, RhythmJudgeConfig
 from music_practice.rhythm.judge import ExpectedNote, RhythmSegment
@@ -88,6 +88,17 @@ def analyze_pitch_track(
     config: PitchDetectConfig | None = None,
 ) -> PitchTrack:
     return detect_pitch_track(wav_path, config=config, tempo=tempo)
+
+
+def detect_pitch_data(
+    audio: str | Path | np.ndarray,
+    *,
+    sample_rate: int | None = None,
+    tempo: float = 120.0,
+    config: PitchDetectConfig | None = None,
+) -> dict:
+    """Public pitch entry → PitchTrackData dict (see doc/PITCH_INTERFACE.md)."""
+    return detect_pitch(audio, sample_rate=sample_rate, tempo=tempo, config=config)
 
 
 def analyze_pitch_segment(

@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from music2seq.types import NoteEvent
+from music_practice.start_match.types import NoteEvent
 
 
 def save_note_events(path: str | Path, events: list[NoteEvent]) -> Path:

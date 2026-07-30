@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
-from music2seq.types import NoteEvent
+from music_practice.start_match.types import NoteEvent
 
 STEP_TO_SEMITONE = {"C": 0, "D": 2, "E": 4, "F": 5, "G": 7, "A": 9, "B": 11}
 

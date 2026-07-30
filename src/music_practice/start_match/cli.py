@@ -64,9 +64,9 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.command == "build":
-        from music2seq import build_template
-        from music2seq.features.preprocess import pitch_preprocess_config
-        from music2seq.types import FEATURE_KIND_MEL, FEATURE_KIND_PITCH
+        from music_practice.start_match import build_template
+        from music_practice.start_match.features.preprocess import pitch_preprocess_config
+        from music_practice.start_match.types import FEATURE_KIND_MEL, FEATURE_KIND_PITCH
 
         feature_kind = FEATURE_KIND_PITCH if args.feature_kind == "pitch" else FEATURE_KIND_MEL
         preprocess = None
@@ -87,7 +87,7 @@ def main() -> None:
         return
 
     if args.command == "match":
-        from music2seq import match_query
+        from music_practice.start_match import match_query
 
         result = match_query(
             args.template_id,
@@ -108,7 +108,7 @@ def main() -> None:
         return
 
     if args.command == "locate":
-        from music2seq import locate_query
+        from music_practice.start_match import locate_query
 
         result = locate_query(
             args.template_id,
@@ -135,7 +135,7 @@ def main() -> None:
         return
 
     if args.command == "convert-m4a":
-        from music2seq.utils import convert_m4a_dir
+        from music_practice.start_match.utils import convert_m4a_dir
 
         paths = convert_m4a_dir(
             args.input_dir,

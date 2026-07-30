@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import numpy as np
 
-from music2seq.features.pitch_extractor import PitchSequence
-from music2seq.score.store import load_note_events
-from music2seq.template.store import TemplatePackage
-from music2seq.types import NoteEvent
+from music_practice.start_match.features.pitch_extractor import PitchSequence
+from music_practice.start_match.score.store import load_note_events
+from music_practice.start_match.template.store import TemplatePackage
+from music_practice.start_match.types import NoteEvent
 
 from music_practice.types import StartNoteRef
 

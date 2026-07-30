@@ -22,15 +22,15 @@
 - `src/music_practice/rhythm/duration.py`
 - `tests/test_rhythm_judge.py` / `tests/test_rhythm_duration.py`
 
-## MusicXML 期望时间矫正（`deps/music2seq`）
+## MusicXML 期望时间矫正（`start_match.score.parser`）
 
 - 和弦 `<chord/>` 与主音**同起音**
 - 速度记号尊重 `<offset>`（如小节末改速，不提前改变整小节休止速度）
 
 涉及文件：
 
-- `deps/music2seq/music2seq/score/parser.py`
-- `deps/music2seq/tests/test_score_locator.py`
+- `src/music_practice/start_match/score/parser.py`
+- `tests/test_start_match_score_locator.py`
 
 ## Winter 全曲回归
 

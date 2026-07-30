@@ -1,9 +1,9 @@
-from music2seq.features.extractor import (
+from music_practice.start_match.features.extractor import (
     compute_mel_frames,
     load_audio_mono,
     standardize_with_template_stats,
 )
-from music2seq.features.pitch_extractor import (
+from music_practice.start_match.features.pitch_extractor import (
     audio_to_pitch_frames,
     clip_to_pitch_sequence,
     extract_chroma_cqt,
@@ -11,7 +11,7 @@ from music2seq.features.pitch_extractor import (
     smooth_chroma,
     wav_to_pitch,
 )
-from music2seq.features.preprocess import (
+from music_practice.start_match.features.preprocess import (
     PreprocessConfig,
     apply_preprocess,
     load_and_preprocess,

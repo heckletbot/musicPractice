@@ -7,8 +7,9 @@ from typing import Sequence
 
 import numpy as np
 
+from music_practice.contract.bridge import coerce_pitch_track
 from music_practice.pitch.config import PitchDetectConfig
-from music_practice.pitch.detector import PitchTrack, detect_pitch_track
+from music_practice.pitch.detector import PitchTrack, detect_pitch, pitch_track_from_audio
 from music_practice.rhythm.config import OnsetDetectConfig, RhythmJudgeConfig
 from music_practice.rhythm.judge import ExpectedNote, RhythmSegment, judge_notes
 from music_practice.rhythm.onset import detect_onsets, detect_onsets_audio
@@ -37,7 +38,7 @@ def evaluate_rhythm(
 
     Provide either ``detected_onsets`` + ``track`` (inject path), or PCM via
     ``audio`` / ``wav_path`` (detection path). If only PCM is given, pitch track
-    and onsets are computed automatically.
+    and onsets are computed via ``pitch.detect_pitch`` (public API).
     """
     tempo = _normalize_tempo(tempo_bpm)
     jcfg = judge_config or RhythmJudgeConfig()
@@ -56,7 +57,9 @@ def evaluate_rhythm(
         )
         if pitch_track is None:
             pitch_cfg = PitchDetectConfig.for_tempo(tempo, sample_rate=ocfg.sample_rate)
-            pitch_track = detect_pitch_track(wav_path, config=pitch_cfg, tempo=tempo)
+            pitch_track = coerce_pitch_track(
+                detect_pitch(wav_path, tempo=tempo, config=pitch_cfg)
+            )
     elif audio is not None:
         sr = sample_rate if sample_rate is not None else ocfg.sample_rate
         onsets = (
@@ -65,11 +68,10 @@ def evaluate_rhythm(
             else detect_onsets_audio(audio, sample_rate=sr, config=ocfg, tempo=tempo)
         )
         if pitch_track is None:
-            # Build pitch track via temporary path-free path: reuse detect on mono buffer.
-            from music_practice.pitch.detector import PitchFrame
-
             pitch_cfg = PitchDetectConfig.for_tempo(tempo, sample_rate=sr)
-            pitch_track = _pitch_track_from_audio(audio, pitch_cfg)
+            pitch_track = coerce_pitch_track(
+                detect_pitch(audio, sample_rate=sr, tempo=tempo, config=pitch_cfg)
+            )
     else:
         raise ValueError("Provide (detected_onsets + track) or wav_path/audio")
 
@@ -83,52 +85,8 @@ def evaluate_rhythm(
     )
 
 
-def _pitch_track_from_audio(audio: np.ndarray, cfg: PitchDetectConfig) -> PitchTrack:
-    """Frame-wise pitch for in-memory PCM (same hop policy as detect_pitch_track)."""
-    import librosa
-
-    from music_practice.pitch.convert import hz_to_midi, hz_to_pitch_name
-    from music_practice.pitch.detector import PitchFrame
-
-    audio_f = np.asarray(audio, dtype=np.float32)
-    if audio_f.size < cfg.frame_size:
-        return PitchTrack(
-            sample_rate=cfg.sample_rate,
-            frame_size=cfg.frame_size,
-            window_duration_sec=cfg.window_duration_sec,
-            frames=[],
-        )
-
-    f0, voiced_flag, _ = librosa.pyin(
-        audio_f,
-        fmin=cfg.fmin_hz,
-        fmax=cfg.fmax_hz,
-        sr=cfg.sample_rate,
-        frame_length=cfg.frame_size,
-        hop_length=cfg.frame_size,
-        center=False,
-    )
-    frames: list[PitchFrame] = []
-    for i, hz_raw in enumerate(f0):
-        voiced = bool(voiced_flag[i]) if voiced_flag is not None else False
-        hz = float(hz_raw) if voiced and hz_raw is not None and np.isfinite(hz_raw) else None
-        midi = hz_to_midi(hz, a4_hz=cfg.a4_frequency_hz) if hz is not None else -1.0
-        name = hz_to_pitch_name(hz, a4_hz=cfg.a4_frequency_hz) if hz is not None else None
-        frames.append(
-            PitchFrame(
-                time_sec=i * cfg.window_duration_sec,
-                frequency_hz=hz,
-                pitch_midi=midi if hz is not None else -1.0,
-                pitch=name,
-                voiced=hz is not None,
-            )
-        )
-    return PitchTrack(
-        sample_rate=cfg.sample_rate,
-        frame_size=cfg.frame_size,
-        window_duration_sec=cfg.window_duration_sec,
-        frames=frames,
-    )
+# Back-compat alias used by rhythm.session and older call sites.
+_pitch_track_from_audio = pitch_track_from_audio
 
 
 def evaluate_rhythm_from_track(

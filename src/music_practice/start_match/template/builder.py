@@ -8,13 +8,13 @@ from pathlib import Path
 
 import numpy as np
 
-from music2seq.features.extractor import wav_to_mel
-from music2seq.features.pitch_extractor import wav_to_pitch
-from music2seq.features.preprocess import PreprocessConfig, pitch_preprocess_config
-from music2seq.score.calibrate import calibrate_note_events_to_template
-from music2seq.score.parser import parse_musicxml
-from music2seq.template.store import TemplatePackage, build_meta, save_template, template_dir
-from music2seq.types import (
+from music_practice.start_match.features.extractor import wav_to_mel
+from music_practice.start_match.features.pitch_extractor import wav_to_pitch
+from music_practice.start_match.features.preprocess import PreprocessConfig, pitch_preprocess_config
+from music_practice.start_match.score.calibrate import calibrate_note_events_to_template
+from music_practice.start_match.score.parser import parse_musicxml
+from music_practice.start_match.template.store import TemplatePackage, build_meta, save_template, template_dir
+from music_practice.start_match.types import (
     FEATURE_KIND_MEL,
     FEATURE_KIND_PITCH,
     FeatureConfig,
@@ -72,7 +72,7 @@ def build_template(
 
     tid = template_id or uuid.uuid4().hex
 
-    from music2seq.template.store import default_templates_dir
+    from music_practice.start_match.template.store import default_templates_dir
 
     root = templates_dir or default_templates_dir()
     out_dir = template_dir(root, tid)

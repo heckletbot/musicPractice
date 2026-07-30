@@ -4,7 +4,7 @@
 
 **解耦**：MusicXML 转换与音频识别通过固定契约 `ScoreData` 通信（见 [SCORE_INTERFACE.md](SCORE_INTERFACE.md)），可单独工作。识别统一入口：`music_practice.recognize.recognize`。兼容入口：`from music_practice import utils`。
 
-本文以**数据流**为主，标明各模块的**输入 / 输出**。开始点识别依赖内嵌包 `deps/music2seq`。
+本文以**数据流**为主，标明各模块的**输入 / 输出**。开始点识别依赖本包 `music_practice.start_match`（原 music2seq）。
 
 ---
 
@@ -36,7 +36,7 @@ flowchart LR
     QueryWav[演奏音频WAV或PCM]
     StartRef[StartNoteRef锚点]
     Expected[ExpectedNote期望音符序列]
-    Templates[music2seq模板目录]
+    Templates[start_match模板目录]
   end
 
   subgraph core [music_practice]
@@ -130,7 +130,7 @@ flowchart LR
   Wav --> Win
 ```
 
-- 算法：mono 加载 → `librosa.pyin`（与 start_detect 的 music2seq 音高特征**独立**）
+- 算法：mono 加载 → `librosa.pyin`（与 start_detect 的 start_match 音高特征**独立**）
 - `tempo` 影响帧长配置（`PitchDetectConfig.for_tempo`）
 - **不写磁盘**
 
@@ -139,7 +139,7 @@ flowchart LR
 ## 4. 开始点 start_detect
 
 **公开入口**：`utils.detect_start_note`、`utils.StartDetectSession` + `AudioFrame`  
-**依赖**：`deps/music2seq`（模板加载、音高序列、DTW 匹配）
+**依赖**：`music_practice.start_match`（模板加载、音高序列、DTW 匹配）
 
 ### 4.1 映射与模板
 
@@ -169,7 +169,7 @@ flowchart TB
 
   Prep["prepare_template_window<br/>锚点 T0 + 模板局部 PitchSequence"]
   QPitch["query → PitchSequence"]
-  DTW["music2seq match_global_sequences DTW"]
+  DTW["start_match match_global_sequences DTW"]
   Out["输出: StartDetectResult<br/>started / DetectedNote / confidence<br/>template_sec / detected_template_sec"]
 
   InS --> Prep
@@ -273,7 +273,7 @@ segs = evaluate_rhythm(
 
 ### 5.2 期望时间轴（MusicXML → note_events）
 
-开始点/节奏夹具的期望秒数来自内嵌 `deps/music2seq` 的 `parse_musicxml`。交付包内解析器已含：
+开始点/节奏夹具的期望秒数来自内嵌 `music_practice.start_match` 的 `parse_musicxml`。交付包内解析器已含：
 
 - **和弦同起音**：带 `<chord/>` 的音与主音共享 onset，不再被排成先后半拍
 - **速度记号 offset**：`<metronome>` + `<offset>` 在偏移处生效（例如双纵线处改速，不提前吃掉整小节休止）
@@ -350,8 +350,8 @@ sequenceDiagram
 |------|------|
 | [`data/score_template_map.json`](data/score_template_map.json) | `score_id → template_id` |
 | `data/scores/{score_id}/` | 导入谱面持久化 |
-| `deps/music2seq/` | 开始点匹配引擎（需 `pip install -e`） |
-| 调用方提供的 `templates_dir` | music2seq 模板包（含 `meta.json`、`note_events.json`、源音频等） |
+| `music_practice.start_match/` | 开始点匹配引擎（随 `[start]` / `[all]` 安装） |
+| 调用方提供的 `templates_dir` | start_match 模板包（含 `meta.json`、`note_events.json`、源音频等） |
 | `tests/fixtures/` | 自测夹具（布局镜像生产 scores/templates） |
 
 ---
