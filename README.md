@@ -2,8 +2,7 @@
 
 MusicXML 单声部跟谱库：谱面导入、音高检测、开始点识别、节奏评测。无 HTTP 服务，通过 Python API 调用。
 
-**MusicXML 转换** 与 **音频识别** 已解耦：二者只通过固定 `ScoreData` 契约交换数据，可单独安装、单独工作。接口见 [doc/SCORE_INTERFACE.md](doc/SCORE_INTERFACE.md)。  
-音高检测对外契约见 [doc/PITCH_INTERFACE.md](doc/PITCH_INTERFACE.md)。
+**MusicXML 转换**、**音高检测**、**节奏评估**可单独使用；使用指南见 [doc/GUIDE_MUSICXML.md](doc/GUIDE_MUSICXML.md)、[doc/GUIDE_PITCH.md](doc/GUIDE_PITCH.md)、[doc/GUIDE_RHYTHM.md](doc/GUIDE_RHYTHM.md)。架构见 [doc/ARCHITECTURE.md](doc/ARCHITECTURE.md)。
 
 ## 依赖与安装
 
@@ -62,10 +61,10 @@ python scripts/import_score.py path/to/score.musicxml --score-id my_score
 
 ```
 doc/             # 项目文档（仅 README 留在根目录）
-  SCORE_INTERFACE.md
-  PITCH_INTERFACE.md
   ARCHITECTURE.md
-  TESTING.md
+  GUIDE_MUSICXML.md
+  GUIDE_PITCH.md
+  GUIDE_RHYTHM.md
   CHANGELOG_RHYTHM.md
 src/music_practice/
   contract/      # ScoreData / PitchTrackData 校验 / 桥接（无音频依赖）
@@ -92,4 +91,4 @@ python -m pytest tests/test_contract_interface.py tests/test_pitch_track_contrac
 python -m pytest tests/ -v
 ```
 
-交付用例说明见 [doc/TESTING.md](doc/TESTING.md)。
+模块用法见 [doc/](doc/README.md)。

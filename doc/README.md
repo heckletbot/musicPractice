@@ -4,8 +4,8 @@
 
 | 文档 | 说明 |
 |------|------|
-| [SCORE_INTERFACE.md](./SCORE_INTERFACE.md) | MusicXML 转换 ↔ 识别固定契约（ScoreData / recognize） |
-| [PITCH_INTERFACE.md](./PITCH_INTERFACE.md) | 音高检测 ↔ 识别固定契约（PitchTrackData / detect_pitch） |
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | 模块数据流与输入输出 |
-| [TESTING.md](./TESTING.md) | 自测与夹具用法 |
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | 模块数据流与输入输出（架构） |
+| [GUIDE_MUSICXML.md](./GUIDE_MUSICXML.md) | MusicXML 转换单独使用：输入 / 输出（ScoreData） |
+| [GUIDE_PITCH.md](./GUIDE_PITCH.md) | 音高检测单独使用：输入 / 输出（PitchTrackData） |
+| [GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md) | 节奏评估整体使用：调用方式与输入 / 输出 |
 | [CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md) | 节奏 / 谱面时间轴相关变更 |

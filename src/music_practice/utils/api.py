@@ -97,7 +97,7 @@ def detect_pitch_data(
     tempo: float = 120.0,
     config: PitchDetectConfig | None = None,
 ) -> dict:
-    """Public pitch entry → PitchTrackData dict (see doc/PITCH_INTERFACE.md)."""
+    """Public pitch entry → PitchTrackData dict (see doc/GUIDE_PITCH.md)."""
     return detect_pitch(audio, sample_rate=sample_rate, tempo=tempo, config=config)
 
 

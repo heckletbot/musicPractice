@@ -2,7 +2,7 @@
 
 `music-practice` 是 **MusicXML 单声部跟谱** Python 库（无 HTTP 服务）。
 
-**解耦**：MusicXML 转换与音频识别通过固定契约 `ScoreData` 通信（见 [SCORE_INTERFACE.md](SCORE_INTERFACE.md)），可单独工作。识别统一入口：`music_practice.recognize.recognize`。兼容入口：`from music_practice import utils`。
+**解耦**：MusicXML 转换与音频识别通过固定契约 `ScoreData` 通信（见 [GUIDE_MUSICXML.md](GUIDE_MUSICXML.md)），可单独工作。识别统一入口：`music_practice.recognize.recognize`。兼容入口：`from music_practice import utils`。
 
 本文以**数据流**为主，标明各模块的**输入 / 输出**。开始点识别依赖本包 `music_practice.start_match`（原 music2seq）。
 
@@ -365,6 +365,7 @@ sequenceDiagram
 ## 相关文档
 
 - 安装与用法：[../README.md](../README.md)
-- 自测用例：[TESTING.md](./TESTING.md)
+- MusicXML 转换：[GUIDE_MUSICXML.md](./GUIDE_MUSICXML.md)
+- 音高检测：[GUIDE_PITCH.md](./GUIDE_PITCH.md)
+- 节奏评估：[GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md)
 - 节奏 / 谱面时间轴更新：[CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md)
-- 转换 ↔ 识别契约：[SCORE_INTERFACE.md](./SCORE_INTERFACE.md)
