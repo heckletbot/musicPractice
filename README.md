@@ -65,7 +65,6 @@ doc/             # 项目文档（仅 README 留在根目录）
   GUIDE_MUSICXML.md
   GUIDE_PITCH.md
   GUIDE_RHYTHM.md
-  CHANGELOG_RHYTHM.md
 src/music_practice/
   contract/      # ScoreData / PitchTrackData 校验 / 桥接（无音频依赖）
   score/         # MusicXML → ScoreData

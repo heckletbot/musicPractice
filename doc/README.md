@@ -8,4 +8,3 @@
 | [GUIDE_MUSICXML.md](./GUIDE_MUSICXML.md) | MusicXML 转换单独使用：输入 / 输出（ScoreData） |
 | [GUIDE_PITCH.md](./GUIDE_PITCH.md) | 音高检测单独使用：输入 / 输出（PitchTrackData） |
 | [GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md) | 节奏评估整体使用：调用方式与输入 / 输出 |
-| [CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md) | 节奏 / 谱面时间轴相关变更 |

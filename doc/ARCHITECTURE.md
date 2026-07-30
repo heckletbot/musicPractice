@@ -301,7 +301,7 @@ flowchart LR
 | 新音起 | `detected_sec`；`shift_sec` 作用于该音及之后所有期望 onset |
 
 特点：只扫已有 `PitchTrack` 帧，**不**重跑整曲 pyin；前音结束搜索硬上限为下一音期望起音之前，避免锁到后音。  
-配置：`RestReanchorConfig`（`min_rest_beat`、搜索窗拍数、音高容差等）。详见 [CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md)。
+配置：`RestReanchorConfig`（`min_rest_beat`、搜索窗拍数、音高容差等）。详见 [GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md)。
 
 典型接入（在节奏判定前）：
 
@@ -368,4 +368,3 @@ sequenceDiagram
 - MusicXML 转换：[GUIDE_MUSICXML.md](./GUIDE_MUSICXML.md)
 - 音高检测：[GUIDE_PITCH.md](./GUIDE_PITCH.md)
 - 节奏评估：[GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md)
-- 节奏 / 谱面时间轴更新：[CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md)

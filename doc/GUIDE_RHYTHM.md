@@ -234,7 +234,7 @@ from music_practice.rhythm import RhythmSession
 # push PCM 帧 → 可能返回已关闭的 RhythmSegment；flush 收尾
 ```
 
-细节见 [ARCHITECTURE.md](./ARCHITECTURE.md) §5、[CHANGELOG_RHYTHM.md](./CHANGELOG_RHYTHM.md)。
+细节见 [ARCHITECTURE.md](./ARCHITECTURE.md) §5。
 
 ---
 
