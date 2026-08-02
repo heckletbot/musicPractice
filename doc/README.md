@@ -6,5 +6,6 @@
 |------|------|
 | [ARCHITECTURE.md](./ARCHITECTURE.md) | 模块数据流与输入输出（架构） |
 | [GUIDE_MUSICXML.md](./GUIDE_MUSICXML.md) | MusicXML 转换单独使用：输入 / 输出（ScoreData） |
+| [KNOWN_ISSUES_MUSICXML.md](./KNOWN_ISSUES_MUSICXML.md) | MusicXML 转换已知遗留（tempo offset 等） |
 | [GUIDE_PITCH.md](./GUIDE_PITCH.md) | 音高检测单独使用：输入 / 输出（PitchTrackData） |
 | [GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md) | 节奏评估整体使用：调用方式与输入 / 输出 |

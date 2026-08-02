@@ -16,10 +16,14 @@ def convert_musicxml(
     *,
     score_id: str | None = None,
     interval_measures: int = 4,
-    default_tempo_bpm: float = 120.0,
     part_id: str | None = None,
 ) -> dict[str, Any]:
-    """Parse MusicXML and return fixed-interface ``ScoreData`` (no persist, no recognize)."""
+    """Parse MusicXML and return fixed-interface ``ScoreData`` (no persist, no recognize).
+
+    Tempo is taken from the score (metronome / ``sound/@tempo``); there is no
+    caller tempo parameter. ``ScoreData.tempo`` is the opening tempo used for
+    the timeline (or an internal fallback if the score has none).
+    """
     path = Path(musicxml_path).resolve()
     if not path.exists():
         raise FileNotFoundError(f"MusicXML not found: {path}")
@@ -27,7 +31,6 @@ def convert_musicxml(
     score = load_score_from_musicxml(
         path,
         interval_measures=interval_measures,
-        default_tempo_bpm=default_tempo_bpm,
         part_id=part_id,
         score_id=resolved_id,
     )

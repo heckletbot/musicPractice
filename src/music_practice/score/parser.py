@@ -40,10 +40,19 @@ class ParseContext:
     chromatic: int = 0
     diatonic: int = 0
     current_time: float = 0.0
+    # Onset (sec) of the most recent non-chord sounded note; chord tones reuse it.
+    chord_anchor_sec: float = 0.0
 
     @property
-    def time_per_division(self) -> float:
-        return 60.0 / self.tempo_bpm
+    def sec_per_quarter(self) -> float:
+        return 60.0 / max(self.tempo_bpm, 1e-6)
+
+    @property
+    def measure_duration_sec(self) -> float:
+        """One bar length in seconds from time signature + current tempo."""
+        # beats * (4/beat_type) = quarters per measure
+        quarters = float(self.beats) * (4.0 / max(float(self.beat_type), 1e-6))
+        return quarters * self.sec_per_quarter
 
 
 def _strip_namespace(tag: str) -> str:
@@ -129,21 +138,22 @@ def _metronome_to_quarter_bpm(metronome: ET.Element, per_minute: float) -> float
     # Each beat-unit-dot multiplies duration by 3/2 (single / double / ... dots).
     dots = sum(1 for node in list(metronome) if _strip_namespace(node.tag) == "beat-unit-dot")
     if dots:
-        quarters *= (1.5**dots)
+        quarters *= 1.5**dots
     # N metronome-beats/min * quarters/metronome-beat = quarters/min.
     return float(per_minute) * float(quarters)
 
 
-def _apply_attributes(attributes: ET.Element, ctx: ParseContext) -> None:
-    """Apply measure-level attributes (time signature, divisions, transpose, multiple-rest)."""
+def _apply_attributes(attributes: ET.Element, ctx: ParseContext) -> int:
+    """Apply measure-level attributes. Returns multiple-rest bar count (0 if none)."""
     time_elem = _child(attributes, "time")
     if time_elem is not None:
         beats = _text(time_elem, "beats")
         beat_type = _text(time_elem, "beat-type")
         if beats is not None:
-            ctx.beats = int(beats)
+            # Support simple "4"; ignore compound "3+2" for now.
+            ctx.beats = int(float(str(beats).split("+")[0]))
         if beat_type is not None:
-            ctx.beat_type = int(beat_type)
+            ctx.beat_type = int(float(beat_type))
 
     divisions = _text(attributes, "divisions")
     if divisions is not None:
@@ -162,9 +172,8 @@ def _apply_attributes(attributes: ET.Element, ctx: ParseContext) -> None:
     if measure_style is not None:
         multiple_rest = _text(measure_style, "multiple-rest")
         if multiple_rest is not None:
-            rest_measures = int(multiple_rest)
-            measure_duration = rest_measures * ctx.beats * ctx.time_per_division
-            ctx.current_time += measure_duration
+            return max(int(float(multiple_rest)), 0)
+    return 0
 
 
 def _key_from_fifths(fifths: int) -> str:
@@ -191,7 +200,7 @@ def _pitch_midi(step: str, alter: int, octave: int, chromatic: int) -> int:
 
 
 def _note_duration_sec(duration_ticks: float, ctx: ParseContext) -> float:
-    return duration_ticks / ctx.divisions * ctx.time_per_division
+    return duration_ticks / ctx.divisions * ctx.sec_per_quarter
 
 
 def _parse_pitch(note_elem: ET.Element, ctx: ParseContext) -> tuple[str, int] | None:
@@ -224,32 +233,49 @@ def _handle_note(
     measure_no: int,
     measure_start_div: float,
     current_div: float,
-) -> tuple[ParsedNote | None, float]:
-    """Handle rest, grace, and normal notes."""
+    chord_anchor_div: float,
+) -> tuple[ParsedNote | None, float, float]:
+    """Handle rest / grace / normal notes.
+
+    Chord tones (``<chord/>``) share the primary note's onset and beat; they do
+    not advance the timeline. Returns ``(note|None, next_div, next_anchor_div)``.
+    """
     dur_div = float(_text(note_elem, "duration", "0") or "0")
     is_chord = _child(note_elem, "chord") is not None
 
     if _is_grace(note_elem):
-        return None, current_div
+        return None, current_div, chord_anchor_div
 
     if _is_rest(note_elem):
+        if is_chord:
+            return None, current_div, chord_anchor_div
         duration = _note_duration_sec(dur_div, ctx)
         ctx.current_time += duration
-        if not is_chord:
-            return None, current_div + dur_div
-        return None, current_div
+        return None, current_div + dur_div, chord_anchor_div
 
     pitch_info = _parse_pitch(note_elem, ctx)
     if pitch_info is None or dur_div <= 0:
         if not is_chord:
-            return None, current_div + dur_div
-        return None, current_div
+            return None, current_div + dur_div, chord_anchor_div
+        return None, current_div, chord_anchor_div
 
     pitch_name, pitch_midi = pitch_info
     duration = _note_duration_sec(dur_div, ctx)
-    offset = ctx.current_time
-    beat = (current_div - measure_start_div) / ctx.divisions + 1.0
 
+    if is_chord:
+        offset = ctx.chord_anchor_sec
+        start_div = chord_anchor_div
+        next_div = current_div
+        next_anchor_div = chord_anchor_div
+    else:
+        offset = ctx.current_time
+        ctx.chord_anchor_sec = offset
+        start_div = current_div
+        next_anchor_div = current_div
+        ctx.current_time += duration
+        next_div = current_div + dur_div
+
+    beat = (start_div - measure_start_div) / ctx.divisions + 1.0
     note = ParsedNote(
         pitch=pitch_name,
         measure=measure_no,
@@ -259,10 +285,7 @@ def _handle_note(
         interval_id=0,
         pitch_midi=pitch_midi,
     )
-
-    ctx.current_time += duration
-    next_div = current_div if is_chord else current_div + dur_div
-    return note, next_div
+    return note, next_div, next_anchor_div
 
 
 @dataclass
@@ -284,6 +307,9 @@ def parse_musicxml(
     """Parse MusicXML into notes with absolute onset (seconds from score start).
 
     If session_start_measure is set, note.onset is rebased to 0 at that measure's first beat.
+
+    ``default_tempo_bpm`` is only an internal fallback when the score has no
+    metronome / ``sound/@tempo`` (``convert_musicxml`` does not expose it).
     """
     xml_path = Path(path)
     root = ET.parse(xml_path).getroot()
@@ -293,6 +319,9 @@ def parse_musicxml(
     key_fifths = 0
     notes: list[ParsedNote] = []
     max_measure = 0
+    # First tempo from score marks (or fallback once notes begin).
+    initial_tempo: float | None = None
+    skip_measures = 0
 
     parts = _iter_parts(root)
     if part_id is not None:
@@ -302,12 +331,18 @@ def parse_musicxml(
 
     for part in parts:
         current_div = 0.0
+        chord_anchor_div = 0.0
 
         for measure in _children(part, "measure"):
+            if skip_measures > 0:
+                skip_measures -= 1
+                continue
+
             measure_no_text = measure.attrib.get("number", "0").split(".")[0]
             measure_no = int(measure_no_text or "0")
             max_measure = max(max_measure, measure_no)
             measure_start_div = current_div
+            multi_rest_bars = 0
 
             for item in list(measure):
                 tag = _strip_namespace(item.tag)
@@ -317,12 +352,14 @@ def parse_musicxml(
                         fifths_text = _text(key_elem, "fifths")
                         if fifths_text is not None:
                             key_fifths = int(fifths_text)
-                    _apply_attributes(item, ctx)
+                    multi_rest_bars = max(multi_rest_bars, _apply_attributes(item, ctx))
                     continue
                 if tag == "direction":
                     tempo = _tempo_from_direction(item)
                     if tempo is not None:
                         ctx.tempo_bpm = tempo
+                        if initial_tempo is None:
+                            initial_tempo = tempo
                     continue
                 if tag == "backup":
                     current_div -= float(_text(item, "duration", "0") or "0")
@@ -333,15 +370,27 @@ def parse_musicxml(
                 if tag != "note":
                     continue
 
-                note, current_div = _handle_note(
+                note, current_div, chord_anchor_div = _handle_note(
                     item,
                     ctx,
                     measure_no=measure_no,
                     measure_start_div=measure_start_div,
                     current_div=current_div,
+                    chord_anchor_div=chord_anchor_div,
                 )
                 if note is not None:
+                    if initial_tempo is None:
+                        initial_tempo = ctx.tempo_bpm
                     notes.append(note)
+
+            # Expand multi-measure rest: N * one_bar_sec; skip N-1 placeholder bars.
+            if multi_rest_bars > 0:
+                bar_sec = ctx.measure_duration_sec
+                ctx.current_time += float(multi_rest_bars) * bar_sec
+                beat_unit = 4.0 / max(float(ctx.beat_type), 1e-6)
+                measure_divs = float(ctx.beats) * beat_unit * ctx.divisions
+                current_div += float(multi_rest_bars) * measure_divs
+                skip_measures = max(multi_rest_bars - 1, 0)
 
     if session_start_measure is not None:
         anchor = _onset_at_measure(notes, session_start_measure)
@@ -351,7 +400,7 @@ def parse_musicxml(
 
     meta = ParsedScoreMeta(
         title=title,
-        tempo=ctx.tempo_bpm,
+        tempo=float(initial_tempo if initial_tempo is not None else ctx.tempo_bpm),
         time_signature=f"{ctx.beats}/{ctx.beat_type}",
         key=_key_from_fifths(key_fifths),
         total_measures=max_measure,

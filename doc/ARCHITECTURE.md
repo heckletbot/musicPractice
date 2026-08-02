@@ -366,5 +366,6 @@ sequenceDiagram
 
 - 安装与用法：[../README.md](../README.md)
 - MusicXML 转换：[GUIDE_MUSICXML.md](./GUIDE_MUSICXML.md)
+- MusicXML 遗留问题：[KNOWN_ISSUES_MUSICXML.md](./KNOWN_ISSUES_MUSICXML.md)
 - 音高检测：[GUIDE_PITCH.md](./GUIDE_PITCH.md)
 - 节奏评估：[GUIDE_RHYTHM.md](./GUIDE_RHYTHM.md)

@@ -80,7 +80,7 @@ tests/
 ## 项目分析
 
 模块数据流、输入与输出见 [doc/ARCHITECTURE.md](doc/ARCHITECTURE.md)。  
-节奏窗模式 `anchored_grid`、空拍前后双校准见 [doc/CHANGELOG_RHYTHM.md](doc/CHANGELOG_RHYTHM.md)。
+节奏用法见 [doc/GUIDE_RHYTHM.md](doc/GUIDE_RHYTHM.md)。
 
 ## 自测
 

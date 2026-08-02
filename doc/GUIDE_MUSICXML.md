@@ -22,9 +22,10 @@ score_data = convert_musicxml(
     *,
     score_id="winter_1973",       # 可选；默认由文件名生成
     interval_measures=4,          # 练习分段：每段小节数
-    default_tempo_bpm=120.0,      # 谱面无速度记号时的默认 BPM
     part_id=None,                 # 多声部时指定 part id；None = 取第一个 part
 )
+# 速度只来自谱面 metronome / sound/@tempo，无调用方 tempo 参数；
+# ScoreData.tempo = 曲首速度（供识别侧帧长等使用；逐音时间已写在 notes[].onset）
 
 # 可选：校验 / 落盘 / 再加载
 validate_score_data(score_data)
@@ -56,14 +57,14 @@ App 也可**自己构造**同结构的 `ScoreData`，跳过本库转换，只要
 |------|------|------|------|
 | `score_id` | `str` \| `None` | `None` | 谱面 ID；`None` 时由文件名 slug 生成 |
 | `interval_measures` | `int` | `4` | 练习段长度（小节数） |
-| `default_tempo_bpm` | `float` | `120.0` | 无 metronome / `sound/@tempo` 时的默认四分音符 BPM |
 | `part_id` | `str` \| `None` | `None` | 指定 `<score-part>` / `<part>` id；`None` 取第一个 |
 
 **约定（当前实现）**
 
 - 单声部跟谱；多声部需显式 `part_id`。
-- 速度：`sound/@tempo` 优先（视为四分 BPM）；否则 metronome（含附点拍号单位）换算为四分 BPM。
-- 输出 `notes` 为**发音音**序列（休止不进主列表或按契约标记；当前以发音音为主）。
+- **无调用方 tempo 参数**；速度只读谱面：`sound/@tempo` 优先（四分 BPM），否则 metronome（含附点拍号单位）换算为四分 BPM。谱面完全无速度记号时内部回退 120。
+- `<chord/>` 音与主音**同起音**；`<multiple-rest N/>` 前进 `N × 一小节秒数`（由拍号 + 当前速度算出）。
+- 输出 `notes` 为**发音音**序列（休止不进主列表；当前以发音音为主）。
 
 ---
 
@@ -79,7 +80,7 @@ App 也可**自己构造**同结构的 `ScoreData`，跳过本库转换，只要
 | `schema_version` | `str` | 是 | 当前 `"1.0"` |
 | `score_id` | `str` | 是 | 谱面 ID |
 | `title` | `str` | 是 | 曲名（可空串） |
-| `tempo` | `float` | 是 | BPM，必须 > 0 |
+| `tempo` | `float` | 是 | 曲首四分 BPM（谱面速度记号；非调用方输入），必须 > 0 |
 | `time_signature` | `str` | 是 | 如 `"4/4"`、`"6/8"` |
 | `key` | `str` | 是 | 调号描述，如 `"F major"` |
 | `total_measures` | `int` | 是 | 总小节数 |
@@ -183,4 +184,5 @@ from music_practice.contract import (
 
 新集成优先使用 `convert_musicxml` → `ScoreData`。
 
-架构总览见 [ARCHITECTURE.md](./ARCHITECTURE.md)。
+架构总览见 [ARCHITECTURE.md](./ARCHITECTURE.md)。  
+已知遗留（速度 `<offset>`、backup 等）见 [KNOWN_ISSUES_MUSICXML.md](./KNOWN_ISSUES_MUSICXML.md)。
